@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "Nav.scss",
+        "../../../sass/_vars.scss"
+    ],
+    "names": [],
+    "file": "Nav.css"
+}
