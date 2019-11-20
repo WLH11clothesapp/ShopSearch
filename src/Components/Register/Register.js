@@ -25,24 +25,19 @@ function Register(props) {
         console.log(props)
     }
     const handleRegBtn = () => {
-        console.log('hit registeresdefefs')
         axios.post('/auth/register', {
             name: state.name,
             email: state.email,
             igHandle: state.igHandle,
             password: state.password
         }).then(res => {
-            console.log('hit register')
-
-            // props.history.push('/userprofile') this is breaking
-
+            props.history.push('/userprofile')
         }).catch(err => { console.log(err) })
     }
 
 
     return (
         <div className="register-page">
-            <nav className="placeholder">When our nav component is wireframed, we can add it here. This nav is a placeholder for now</nav>
 
             <p className="register-info"> This is some information about why you should register for an account</p>
             <section className="register-form">

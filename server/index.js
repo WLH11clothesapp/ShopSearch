@@ -33,8 +33,8 @@ massive(CONNECTION_STRING).then(db => {
 });
 
 //// authController endpoints
-// app.post("/api/login", authCtrl.login);
-// app.post("/api/register", authCtrl.register);
+app.post("/api/login", authCtrl.login);
+app.post("/api/register", authCtrl.register);
 // app.post("/api/logout", authCtrl.logout);
 // app.get("/api/user", authCtrl.getUser);
 
