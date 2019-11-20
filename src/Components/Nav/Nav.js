@@ -1,5 +1,5 @@
 import React from 'react'
-import '.Nav.css'
+import './Nav.css'
 
 class Nav extends React.Component {
     constructor(){
@@ -10,7 +10,15 @@ class Nav extends React.Component {
     }
     render(){
         return(
-            <div className="Nav">Nav</div>
+            <nav className="nav">
+                {/* we need a ternary here: if there is NO user on session this nav will display, but if there IS a user on session, change register and login to profile and logout */}
+                <section>SEARCH</section>
+                <section>ABOUT</section>
+                <section>LOGO</section>
+                <section>REGISTER</section>
+                <section>LOGIN</section>
+            </nav>
+            
         )
     };
 }

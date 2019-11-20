@@ -1,1 +1,57 @@
-/* No CSS *//*# sourceMappingURL=UserProfile.css.map */
+.user-profile-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.placeholder {
+  height: 10vh;
+  background-color: #e3f2ff;
+}
+
+.logout-button {
+  background-color: #e3f2ff;
+}
+
+.add-post-container {
+  width: 50vw;
+  border: lightgrey 0.1px solid;
+  height: 25vh;
+  font-size: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.user-posts {
+  width: 90vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.user-post {
+  background-color: #e3f2ff;
+  height: 160px;
+  width: 140px;
+  margin: 10px;
+}
+/*# sourceMappingURL=UserProfile.css.map */
