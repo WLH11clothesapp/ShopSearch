@@ -1,13 +1,16 @@
 import React from "react";
 import "./App.css";
+import {HashRouter} from 'react-router-dom'
+
 
 function App() {
   return (
-    <div className="App">
-     App
-    </div>
+
+    <HashRouter>
+        <div className="App">
+        </div>
+    </HashRouter>
   );
 }
 
-export default App;
-
+export default App
