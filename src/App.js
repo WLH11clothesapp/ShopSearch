@@ -5,6 +5,7 @@ import {HashRouter} from 'react-router-dom'
 
 function App() {
   return (
+
     <HashRouter>
         <div className="App">
         </div>
@@ -12,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
