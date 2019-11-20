@@ -1,8 +1,9 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
-import ReactDOM from "react-dom";
-import Landing from "../../server";
+import LandingProducts from "../Components/LandingProducts/LandingProducts";
+
+const { getProducts } = require("./LandingFunctions");
 
 let container = null;
 beforeEach(() => {
@@ -17,9 +18,12 @@ afterEach(() => {
 });
 
 //Cole
-it("Renders Mapped Components", () => {
-  act(() => {
-    render(<Landing />, container);
+it("Gets Products from database", async done => {
+  let products;
+  await act(async () => {
+    products = await getProducts();
+    console.log(products);
   });
-  expect(container.textContent).toContain("Kuhl");
+  expect(products[0].brand).toBe("Kuhl");
+  done();
 });
