@@ -1,1 +1,71 @@
-/* No CSS *//*# sourceMappingURL=Search.css.map */
+.search-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.placeholder {
+  height: 10vh;
+  background-color: #e3f2ff;
+}
+
+.search-container {
+  border: lightgrey 0.1px solid;
+  margin: 10px 0;
+  width: 90vw;
+}
+
+.category-container, .brand-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-left: 40px;
+  padding-bottom: 10px;
+}
+
+.checkBox {
+  width: 20px;
+}
+
+.search-results-container {
+  width: 90vw;
+  border: lightgrey 0.1px solid;
+  padding-bottom: 10px;
+}
+
+.search-results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.search-result {
+  border: lightgrey 0.1px solid;
+  height: 180px;
+  width: 140px;
+  background-color: #e3f2ff;
+  margin: 10px;
+}
+/*# sourceMappingURL=Search.css.map */

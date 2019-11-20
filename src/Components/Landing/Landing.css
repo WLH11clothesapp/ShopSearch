@@ -1,5 +1,82 @@
 .landing-page {
   background-color: white;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.placeholder {
+  height: 10vh;
+  background-color: #e3f2ff;
+}
+
+.landing-content-about {
+  border: lightgrey 0.1px solid;
+  width: 90vw;
+  height: 30vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.popular-products {
+  border: lightgrey 0.1px solid;
+  width: 90vw;
+  height: 40vh;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+.random-products-container {
+  height: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.random-product {
+  border: lightgrey 0.1px solid;
+  height: 42%;
+  width: 40%;
+  background-color: #e3f2ff;
+  margin: 10px;
+}
+
+.landing-content-register {
+  border: lightgrey 0.1px solid;
+  height: 12vh;
+  width: 90vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=Landing.css.map */
