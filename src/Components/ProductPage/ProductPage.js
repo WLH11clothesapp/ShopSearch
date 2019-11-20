@@ -6,10 +6,10 @@ import './ProductPage.css'
 export default function ProductPage (){
     return(
         <div className="product-page">
-            <nav className="placeholder">When our nav component is wireframed, we can add it here. This nav is a placeholder for now</nav>
+            
             <h5>Product Title</h5>
             <section className="product-photo-container">
-                {/* This is a photo of the product the user clicked on from the search page */}
+                {/* This is a photo of the product the user clicked on from the search page, the divs below are examples for wireframing purposes only  */}
             </section>
             <h5>Find this product here (add link to URL)</h5>
             

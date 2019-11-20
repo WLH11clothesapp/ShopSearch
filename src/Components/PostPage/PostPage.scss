@@ -1,1 +1,27 @@
 @import "../../../sass/vars";
+
+.post-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.post-photo-container{
+    background-color: $accent-color;
+    height: 40vh;
+    width: 90vw;
+}
+.product-results{
+    // border: red .1px solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.product-result{
+    border: $border;
+    height: 180px;
+    width: 140px;
+    background-color: $accent-color;
+    margin: 10px;
+}
