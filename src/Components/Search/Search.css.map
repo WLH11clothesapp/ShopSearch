@@ -2,7 +2,8 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "Search.scss"
+        "Search.scss",
+        "../../../sass/_vars.scss"
     ],
     "names": [],
     "file": "Search.css"

@@ -1,1 +1,27 @@
 @import "../../../sass/vars";
+
+.register-page{
+    background-color: $background-color;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.placeholder{
+    height: 10vh;
+    background-color: $accent-color;
+}
+.register-form{
+    height: 65vh;
+    width: 75vw;
+    border: $border;
+}
+input{
+    width: 70%;
+    background-color: $accent-color;
+}
+
+.complete-registration{
+    background-color: $accent-color;
+    margin-top: 60px;
+}
