@@ -1,1 +1,43 @@
-/* No CSS *//*# sourceMappingURL=ProductPage.css.map */
+.product-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.placeholder {
+  height: 10vh;
+  background-color: #e3f2ff;
+}
+
+.product-photo-container {
+  background-color: #e3f2ff;
+  height: 40vh;
+  width: 90vw;
+}
+
+.post-results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.post-result {
+  border: lightgrey 0.1px solid;
+  height: 180px;
+  width: 140px;
+  background-color: #e3f2ff;
+  margin: 10px;
+}
+/*# sourceMappingURL=ProductPage.css.map */

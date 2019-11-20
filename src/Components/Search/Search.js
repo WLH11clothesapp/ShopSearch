@@ -1,1 +1,48 @@
 //Search
+import React from 'react'
+import './Search.css'
+
+export default function Search (){
+    return(
+        <div className="search-page">
+            <nav className="placeholder">When our nav component is wireframed, we can add it here. This nav is a placeholder for now</nav>
+            <section className="search-container">
+                <h5>Search Products</h5>
+                <h5>By URL:</h5>
+                <input placeholder="Enter the URL of your product"/>
+                <h5>By Category:</h5>
+                <div className="category-container">
+                    {/* I added divs here just to package the input and input label together for styling purposes */}
+                <div><input className="checkBox" type="checkbox"/> Shirts</div>
+                <div><input className="checkBox" type="checkbox"/> Outerwear</div>
+                <div><input className="checkBox" type="checkbox"/> Pants</div>
+                <div><input className="checkBox" type="checkbox"/> Shoes</div>
+                <div><input className="checkBox" type="checkbox"/> Accessories</div>
+
+                </div>
+                <h5>By Brand:</h5>
+                <div className="brand-container">
+                    <div><input className="checkBox" type="checkbox"/> Target</div>
+                    <div><input className="checkBox" type="checkbox"/> Nordstrom</div>
+                    <div><input className="checkBox" type="checkbox"/> Nike</div>
+                    <div><input className="checkBox" type="checkbox"/> Free People</div>
+                    <div><input className="checkBox" type="checkbox"/> Kuhl</div>
+                </div>
+                
+            </section>
+            <section className="search-results-container">
+                <h5>Search Results</h5>
+            {/* This is where we will render the SearchResults component and map over the results, the following divs just show an idea of how it will look */}
+                <div className="search-results">
+                    <div className="search-result"></div>
+                    <div className="search-result"></div>
+                    <div className="search-result"></div>
+                    <div className="search-result"></div>
+                    <div className="search-result"></div>
+                    <div className="search-result"></div>
+
+                </div>
+            </section>
+        </div>
+    )
+}

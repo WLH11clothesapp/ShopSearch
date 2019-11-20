@@ -1,1 +1,53 @@
 @import "../../../sass/vars";
+.search-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.placeholder{
+    height: 10vh;
+    background-color: $accent-color;
+    
+}
+.search-container{
+
+    border: $border;
+    margin: 10px 0;
+    width: 90vw;
+
+}
+.category-container, .brand-container{
+    // border: red 1px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 40px;
+    padding-bottom: 10px;
+
+}
+.checkBox{
+    width: 20px;
+}
+// for .search-results-container we might want to adjust the height depending on how many search results we want to show on one page
+
+.search-results-container{
+    width: 90vw;
+    border: $border;
+    padding-bottom: 10px;
+    
+}
+.search-results{
+    // border: red .1px solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.search-result{
+    border: $border;
+    height: 180px;
+    width: 140px;
+    background-color: $accent-color;
+    margin: 10px;
+}

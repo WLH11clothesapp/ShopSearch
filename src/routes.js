@@ -14,10 +14,12 @@ export default (
   <Switch>
     <Route exact path="/" component={Landing} />
     <Route path="/login" component={Login} />
-    <Route path="/register" component={Register} />
+    <Route exact path="/register" component={Register} />
     <Route path="/userprofile" component={UserProfile} />
     <Route path="/search" component={Search} />
     <Route path="/product/:id" component={ProductPage} />
     <Route path="/post/:id" component={PostPage} />
+    <Route path="/newpost" component={NewPost} />
+    {/* //? dont know if we need this one? */}
   </Switch>
 );
