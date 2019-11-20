@@ -6,11 +6,14 @@ const LandingProducts = () => {
   const [products, setProducts] = useState([]);
   const [indexes, setIndexes] = useState([]);
   useEffect(() => {
-    axios
-      .get("/api/products")
-      .then(res => setProducts(res.data))
-      .catch(err => console.log(err));
-    console.log(products);
+    const getProducts = () => {
+      axios
+        .get("/api/products")
+        .then(res => setProducts(res.data))
+        .catch(err => console.log(err));
+      console.log(products);
+    };
+    getProducts();
     //products.length goes where 15 is
   }, []);
 
@@ -37,12 +40,13 @@ const LandingProducts = () => {
     <>
       {products.length >= 1 ? (
         <>
-          <p> {products[indexes[0]].brand}</p>
+          <p>{products[indexes[0]].brand}</p>
           <p> {products[indexes[0]].title}</p>
           <p>{products[indexes[0]].url}</p>
         </>
-      ) : null}
-      <div>{`${indexes[0]}, ${indexes[1]}, ${indexes[2]}, ${indexes[3]}`}</div>
+      ) : (
+        <p>Loading</p>
+      )}
     </>
   );
 };
