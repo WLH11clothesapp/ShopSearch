@@ -1,1 +1,36 @@
-/* No CSS *//*# sourceMappingURL=Register.css.map */
+.register-page {
+  background-color: white;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.placeholder {
+  height: 10vh;
+  background-color: #e3f2ff;
+}
+
+.register-form {
+  height: 65vh;
+  width: 75vw;
+  border: lightgrey 0.1px solid;
+}
+
+input {
+  width: 70%;
+  background-color: #e3f2ff;
+}
+
+.complete-registration {
+  background-color: #e3f2ff;
+  margin-top: 60px;
+}
+/*# sourceMappingURL=Register.css.map */

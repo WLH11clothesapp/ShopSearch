@@ -2,7 +2,8 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "MappedPosts.scss"
+        "MappedPosts.scss",
+        "../../../sass/_vars.scss"
     ],
     "names": [],
     "file": "MappedPosts.css"
