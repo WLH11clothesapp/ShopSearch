@@ -30,25 +30,26 @@ massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
     console.log('The great and powerful DB has been connected')
 })
+// app.use(() => console.log('authCtrl'))
 
 //// authController endpoints
-app.post('/api/login', authCtrl.login)
-app.post('/api/register', authCtrl.register)
-app.post('/api/logout', authCtrl.logout)
-app.get('/api/user', authCtrl.getUser)
+// app.post('/api/login', authCtrl.login)
+app.post('/auth/register', authCtrl.register) // () => {console.log('hit reg index')}
+// app.post('/api/logout', authCtrl.logout)
+// app.get('/api/user', authCtrl.getUser)
 
 //// productController endpoints
-app.get('/api/products', prodCtrl.getProducts)
-app.get('/api/search/', prodCtrl.searchProducts) // use queary
-app.get('/api/product/:prod_id', prodCtrl.getProduct)
-app.post('/api/product', prodCtrl.addProduct)
-app.post('/api/brands', prodCtrl.getBrands)
-app.get('/api/post-products/post_id', prodCtrl.getPostProducts)
+// app.get('/api/products', prodCtrl.getProducts)
+// app.get('/api/search/', prodCtrl.searchProducts) // use queary
+// app.get('/api/product/:prod_id', prodCtrl.getProduct)
+// app.post('/api/product', prodCtrl.addProduct)
+// app.post('/api/brands', prodCtrl.getBrands)
+// app.get('/api/post-products/post_id', prodCtrl.getPostProducts)
 
 //// postController endpoints
-app.post('/api/post', postCtrl.addPost)
-app.get('/api/post/:post_id', postCtrl.getPost)
-app.get('/api/product-posts', postCtrl.getProductPosts)
+// app.post('/api/post', postCtrl.addPost)
+// app.get('/api/post/:post_id', postCtrl.getPost)
+// app.get('/api/product-posts', postCtrl.getProductPosts)
 
 ///add listner
 app.listen(SERVER_PORT, () => console.log(`Server on ${SERVER_PORT}`))
