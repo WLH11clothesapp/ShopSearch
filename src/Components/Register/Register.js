@@ -28,7 +28,7 @@ function Register(props) {
   const handleRegBtn = () => {
     console.log("hit registeresdefefs");
     axios
-      .post("/auth/register", {
+      .post("/api/register", {
         name: state.name,
         email: state.email,
         igHandle: state.igHandle,
