@@ -7,7 +7,7 @@ import { useForm } from '../../hooks/useForm'
 
 function Register(props) {
   //first is the value the state is holding
-  // the second value is a funtion to set the state
+  // the second value is a function to set the state
   // needs to have exact name. as name of input.
   
   const handleRegBtn = () => {  //passed into useForm to be called if tests are passed
@@ -23,7 +23,7 @@ function Register(props) {
 
       ///hook that handles state and verifies that value pass requirements when form is submitted
     let {state, handleChange, handleSubmit, errors} = useForm(handleRegBtn, false)  
-
+    
     return (
         <div className="register-page">
 
