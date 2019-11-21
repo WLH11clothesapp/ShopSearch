@@ -25,3 +25,12 @@ input{
     background-color: $accent-color;
     margin-top: 60px;
 }
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+.inputError{
+    border-color: red
+}
