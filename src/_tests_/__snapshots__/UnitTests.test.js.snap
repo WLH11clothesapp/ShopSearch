@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing routing make sure that '/' renders the landing page correctly 1`] = `
+<a
+  href="#/"
+  onClick={[Function]}
+/>
+`;
+
+exports[`Testing routing make sure that '/login' renders the login page correctly 1`] = `
+<a
+  href="#/login"
+  onClick={[Function]}
+/>
+`;
+
+exports[`Testing routing make sure that '/newpost' renders the login page correctly 1`] = `
+<a
+  href="#/newpost"
+  onClick={[Function]}
+/>
+`;
+
+exports[`Testing routing make sure that '/register' renders the login page correctly 1`] = `
+<a
+  href="#/register"
+  onClick={[Function]}
+/>
+`;
+
+exports[`Testing routing make sure that '/search' renders the login page correctly 1`] = `
+<a
+  href="#/search"
+  onClick={[Function]}
+/>
+`;
+
+exports[`Testing routing make sure that '/userprofile' renders the login page correctly 1`] = `
+<a
+  href="#/userprofile"
+  onClick={[Function]}
+/>
+`;
