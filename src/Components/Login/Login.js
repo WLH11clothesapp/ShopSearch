@@ -1,22 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import { useForm } from '../../hooks/useForm'
+import { Link } from 'react-router-dom'
 
 import './Login.css'
 
 export default function Login(props){
-    const [state, setState] = useState({
-        email: '',
-        password: ''
-    })
-
-    function handleChange(event) {
-        setState({
-            ...state,
-            [event.target.name]: event.target.value
-        })
-    } 
-
+    
     function handleClick () {
         console.log('props', props)
         axios.post('/api/login', {
@@ -28,9 +18,13 @@ export default function Login(props){
         }).catch(err => console.log(err))
     }
 
+
+    let {state, handleChange, handleSubmit, errors} = useForm(handleClick, true)  
+
+
+
     return(
         <div className="login-page">
-            <nav className="placeholder">When our nav component is wireframed, we can add it here. This nav is a placeholder for now</nav>
             
             <p className="login-info"> Are you new to ti.wonkotekil? Click here to Register new account <Link to='/register'><button>here</button></Link></p>
             
@@ -42,18 +36,21 @@ export default function Login(props){
                     name='email'
                     value={state.email}
                     onChange={handleChange}
-                    placeholder="Enter your email"/>
-            
+                    placeholder="Enter your email"
+                    className={`${(errors.email) && "inputError"}`}/> {/*used to make boarder red when test failed*/}
+                {errors.email && <p className="error">{errors.email}</p>} {/* display message when test fail */}
+                                                                        {/* styles for errors are in regester.scss*/}
                 <h5>Password:</h5>
                 <input 
                     name='password'
                     type='password'
                     value={state.password}
                     onChange={handleChange}
-                    placeholder="Enter your password"/>
+                    placeholder="Enter your password"
+                    className={`${(errors.password) && "inputError"}`}/>
                 <br/>
-                <button className="complete-login" onClick={(e) => {console.log('e', e); handleClick()} }> Log In</button>
-
+                {errors.email && <p className="error">{errors.password}</p>}
+                <button className="complete-login" onClick={handleSubmit}> Log In</button>
             </section>
             <footer className="login-footer">If we have enough time, lets add some fun graphic here to fill space. Maybe a "did you know?" fact about our brand or an image </footer>
         </div>

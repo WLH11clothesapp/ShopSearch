@@ -1,60 +1,28 @@
 //Register
-import React, { useState } from "react";
+import React from "react";
 import "./Register.css";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import { useForm } from '../../hooks/useForm'
 
 function Register(props) {
   //first is the value the state is holding
   // the second value is a funtion to set the state
   // needs to have exact name. as name of input.
-  const [state, setState] = useState({
-    name: "",
-    email: "",
-    igHandle: "",
-    password: ""
-  });
-
-  const handleChange = event => {
-    setState({
-      // need to spread operater ...state to pretect the other keys from being overidden.
-      ...state,
-      [event.target.name]: event.target.value
-    });
-    console.log(state);
-    console.log(props);
-  };
-
-  const handleRegBtn = () => {
-    console.log("hit registeresdefefs");
-    axios
-      .post("/auth/register", {
-        name: state.name,
-        email: state.email,
-        igHandle: state.igHandle,
-        password: state.password
-      })
-      .then(res => {
-        console.log("hit register");
-
-    const handleChange = event => {
-        setState({ // need to spread operater ...state to pretect the other keys from being overidden.
-            ...state, [event.target.name]: event.target.value
-        })
-        console.log(state)
-        console.log(props)
-    }
-    const handleRegBtn = () => {
-        axios.post('/auth/register', {
-            name: state.name,
-            email: state.email,
-            igHandle: state.igHandle,
-            password: state.password
+  
+  const handleRegBtn = () => {  //passed into useForm to be called if tests are passed
+      axios.post('/auth/register', {
+          name: state.name,
+          email: state.email,
+          igHandle: state.igHandle,
+          password: state.password
         }).then(res => {
             props.history.push('/userprofile')
         }).catch(err => { console.log(err) })
     }
 
+      ///hook that handles state and verifies that value pass requirements when form is submitted
+    let {state, handleChange, handleSubmit, errors} = useForm(handleRegBtn, false)  
 
     return (
         <div className="register-page">
@@ -68,30 +36,45 @@ function Register(props) {
                     type='text'
                     value={state.name}
                     onChange={handleChange}
+                    className={`${(errors.name) && "inputError"}`}  ///if tests are failed will turn border red
                 />
+                {errors.name && <p className="error">{errors.name}</p>} {/* will display error messes for failed test */}
+                
                 <h5> Email:</h5>
                 <input placeholder="Enter your email"
                     name='email'
                     type='text'
                     value={state.email}
                     onChange={handleChange}
+                    className={`${(errors.email) && "inputError"}`}
+                    
                 />
+                {errors.email && <p className="error">{errors.email}</p>}
+                
                 <h5>Instagram Handle:</h5>
                 <input placeholder="Example: @yourstruly"
                     name='igHandle'
                     type='text'
                     value={state.igHandle}
                     onChange={handleChange}
+                    className={`${(errors.igHandle) && "inputError"}`}
+
                 />
+                {errors.igHandle && <p className="error">{errors.igHandle}</p>}
+
                 <h5>Password:</h5>
                 <input placeholder="Create your password"
                     name='password'
                     type='text'
                     value={state.password}
                     onChange={handleChange}
-                />
+                    className={`${(errors.password) && "inputError"}`}
 
-                <button className="complete-registration" onClick={() => handleRegBtn()}> Register New Account</button>
+                />
+                {errors.password && <p className="error">{errors.password}</p>}
+               
+
+                <button className="complete-registration" onClick={() => handleSubmit()}> Register New Account</button>
 
             </section>
         </div>

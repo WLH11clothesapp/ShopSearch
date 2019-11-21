@@ -33,4 +33,13 @@ input {
   background-color: #e3f2ff;
   margin-top: 60px;
 }
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.inputError {
+  border-color: red;
+}
 /*# sourceMappingURL=Register.css.map */
