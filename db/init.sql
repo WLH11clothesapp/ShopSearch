@@ -6,3 +6,8 @@ CREATE TABLE posts (post_id SERIAL PRIMARY KEY, user_id INT REFERENCES users(use
 CREATE TABLE products (product_id SERIAL PRIMARY KEY, title varchar(50), brand varchar(20), category varchar(20), url varchar(100));
 -- query to create posts-products table
 CREATE TABLE posts_products (pp_id SERIAL PRIMARY KEY, post_id INT REFERENCES posts(post_id), product_id INT REFERENCES products(product_id));
+
+-- added a column to products table for img url
+
+ALTER TABLE products
+ADD img_url VARCHAR(200)
