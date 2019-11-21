@@ -1,55 +1,57 @@
 @import "../../../sass/vars";
 
-.landing-page{
-    background-color: $background-color;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.landing-page {
+  background-color: $background-color;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.placeholder{
-    height: 10vh;
-    background-color: $accent-color;
+.placeholder {
+  height: 10vh;
+  background-color: $accent-color;
 }
-.landing-content-about{
-    border: $border;
-    width: 90vw;
-    height: 30vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px 0;
-
+.landing-content-about {
+  border: $border;
+  width: 90vw;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
 }
-.popular-products{
-    border: $border;
-    width: 90vw;
-    height: 40vh;
-    padding-top: 10px;
-    margin-bottom: 10px;
+.popular-products {
+  border: $border;
+  width: 90vw;
+  height: 40vh;
+  padding-top: 10px;
+  margin-bottom: 10px;
 }
-.random-products-container{
-    // border: red solid .1px;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-
-
+.random-products-container {
+  // border: red solid .1px;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.random-product{
-    border: $border;
-    height: 42%;
-    width: 40%;
-    background-color: $accent-color;
-    margin: 10px;
+.random-product {
+  border: $border;
+  height: 42%;
+  width: 40%;
+  background-color: $accent-color;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
 }
-.landing-content-register{
-    border: $border;
-    height: 12vh;
-    width: 90vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.landing-content-register {
+  border: $border;
+  height: 12vh;
+  width: 90vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
