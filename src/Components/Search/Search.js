@@ -5,7 +5,7 @@ import './Search.css'
 export default function Search (){
     return(
         <div className="search-page">
-            <nav className="placeholder">When our nav component is wireframed, we can add it here. This nav is a placeholder for now</nav>
+            
             <section className="search-container">
                 <h5>Search Products</h5>
                 <h5>By URL:</h5>

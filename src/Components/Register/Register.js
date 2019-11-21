@@ -1,21 +1,41 @@
 //Register
-import React, { useState } from 'react'
-import './Register.css'
-import axios from 'axios'
-import { withRouter } from 'react-router-dom'
+import React, { useState } from "react";
+import "./Register.css";
+import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 function Register(props) {
-    //first is the value the state is holding
-    // the second value is a funtion to set the state
-    // needs to have exact name. as name of input.
-    const [state, setState] = useState({
-        name: '',
-        email: '',
-        igHandle: '',
-        password: ''
-    })
+  //first is the value the state is holding
+  // the second value is a funtion to set the state
+  // needs to have exact name. as name of input.
+  const [state, setState] = useState({
+    name: "",
+    email: "",
+    igHandle: "",
+    password: ""
+  });
 
+  const handleChange = event => {
+    setState({
+      // need to spread operater ...state to pretect the other keys from being overidden.
+      ...state,
+      [event.target.name]: event.target.value
+    });
+    console.log(state);
+    console.log(props);
+  };
 
+  const handleRegBtn = () => {
+    console.log("hit registeresdefefs");
+    axios
+      .post("/auth/register", {
+        name: state.name,
+        email: state.email,
+        igHandle: state.igHandle,
+        password: state.password
+      })
+      .then(res => {
+        console.log("hit register");
 
     const handleChange = event => {
         setState({ // need to spread operater ...state to pretect the other keys from being overidden.
