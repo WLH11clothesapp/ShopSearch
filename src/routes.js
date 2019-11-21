@@ -9,6 +9,7 @@ import ProductPage from "./Components/ProductPage/ProductPage";
 import PostPage from "./Components/PostPage/PostPage";
 import NewPost from "./Components/NewPost/NewPost";
 import UserProfile from "./Components/UserProfile/UserProfile";
+import About from './Components/About/About'
 
 export default (
   <Switch>
@@ -21,5 +22,6 @@ export default (
     <Route path="/post/:id" component={PostPage} />
     <Route path="/newpost" component={NewPost} />
     {/* //? dont know if we need this one? */}
+    <Route path='/about' component={About}/>
   </Switch>
 );

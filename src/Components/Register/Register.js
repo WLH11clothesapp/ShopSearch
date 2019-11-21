@@ -65,7 +65,7 @@ function Register(props) {
                 <h5>Password:</h5>
                 <input placeholder="Create your password"
                     name='password'
-                    type='text'
+                    type='password'
                     value={state.password}
                     onChange={handleChange}
                     className={`${(errors.password) && "inputError"}`}
