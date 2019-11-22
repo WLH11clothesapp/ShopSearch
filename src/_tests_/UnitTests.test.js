@@ -4,7 +4,7 @@ import { act } from 'react-dom/test-utils';
 import renderer from 'react-test-renderer';
 import { HashRouter, Link } from 'react-router-dom';
 
-const { getProducts, validate } = require('./Functions');
+const { getProducts, validate, randomize } = require('./Functions');
 
 describe('Testing get products endpoint', () => {
   let container = null;
@@ -160,5 +160,17 @@ describe('Testing routing', () => {
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Test the random number index functionality', () => {
+  //Andee
+  test('Put in an array of 10 numbers and check that they are in a different order', () => {
+    const input = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let array;
+    act(() => {
+      array = randomize(input);
+    });
+    expect(array).not.toBe(input);
   });
 });

@@ -64,9 +64,15 @@
   padding-bottom: 15px;
 }
 
-.select-category, .select-brand {
+.select-category,
+.select-brand {
   background-color: #e3f2ff;
   border-radius: 0;
+}
+
+.select-category option,
+.select-brand option {
+  text-align: center;
 }
 
 .add-product-button-styler {
