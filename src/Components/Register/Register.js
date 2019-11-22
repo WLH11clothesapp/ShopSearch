@@ -11,7 +11,7 @@ function Register(props) {
   // needs to have exact name. as name of input.
   
   const handleRegBtn = () => {  //passed into useForm to be called if tests are passed
-      axios.post('/auth/register', {
+      axios.post('/api/register', {
           name: state.name,
           email: state.email,
           igHandle: state.igHandle,

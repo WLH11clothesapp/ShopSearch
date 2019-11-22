@@ -12,9 +12,13 @@
 }
 
 .post-photo-container {
-  background-color: #e3f2ff;
   height: 40vh;
   width: 90vw;
+}
+
+.post-photo-container img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .product-results {
@@ -34,5 +38,7 @@
   width: 140px;
   background-color: #e3f2ff;
   margin: 10px;
+  background-size: cover;
+  background-position: center;
 }
 /*# sourceMappingURL=PostPage.css.map */
