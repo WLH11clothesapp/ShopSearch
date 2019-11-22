@@ -12,9 +12,13 @@
 }
 
 .product-photo-container {
-  background-color: #e3f2ff;
   height: 40vh;
   width: 90vw;
+}
+
+.product-photo-container img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .post-results {

@@ -9,27 +9,27 @@ import MappedProducts from '../MappedProducts/MappedProducts'
 export default function PostPage (props){
     
 
-    const [post, setPost] = useState({})
-    const [products, setProducts] = useState(['world'])
+    const [post, setPost] = useState({});
+    const [products, setProducts] = useState([]);
+
 
     useEffect(() => {
-        console.log('props', props.match.params.id)
+        ///grabs the post information to display post image an IG handler
         axios.get(`/api/post/${props.match.params.id}`)
         .then(res => {
             setPost(res.data)
         })
         .catch(err => console.log(err))
 
+        //grabs info to pass onto mapped products that are connected to the post
         axios.get(`/api/post-products/${props.match.params.id}`)
-        .then(res => setProducts(res.data))
+        .then(res => {setProducts(res.data)})
         .catch(err => console.log(err))
-        console.log('p',post)
     },[props.match.params.id])
 
     
 
     const productsList = products.map((e, i) => {
-        console.log('e', e)
         return <MappedProducts 
                     key={`mapped product ${i}`}  
                     image={e.img_url}
@@ -49,7 +49,7 @@ export default function PostPage (props){
             <section className="search-results-container">
             <h5>Products in this post</h5>
                 <div className="product-results">
-                    {productsList}
+                    { productsList }
                 </div>
             </section>
 
