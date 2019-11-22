@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "About.scss",
+        "../../../sass/_vars.scss"
+    ],
+    "names": [],
+    "file": "About.css"
+}

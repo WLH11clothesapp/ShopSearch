@@ -5,6 +5,7 @@ import axios from "axios";
 const LandingProducts = () => {
   const [products, setProducts] = useState([]);
   const [indexes, setIndexes] = useState([]);
+
   useEffect(() => {
     const getProducts = () => {
       axios
@@ -40,9 +41,22 @@ const LandingProducts = () => {
     <>
       {products.length >= 1 ? (
         <>
-          <p>{products[indexes[0]].brand}</p>
-          <p> {products[indexes[0]].title}</p>
-          <p>{products[indexes[0]].url}</p>
+          <div
+            className="random-product"
+            style={{ backgroundImage: `url(${products[indexes[0]].img_url})` }}
+          ></div>
+          <div
+            className="random-product"
+            style={{ backgroundImage: `url(${products[indexes[1]].img_url})` }}
+          ></div>
+          <div
+            className="random-product"
+            style={{ backgroundImage: `url(${products[indexes[2]].img_url})` }}
+          ></div>
+          <div
+            className="random-product"
+            style={{ backgroundImage: `url(${products[indexes[3]].img_url})` }}
+          ></div>
         </>
       ) : (
         <p>Loading</p>
