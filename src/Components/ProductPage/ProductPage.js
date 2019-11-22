@@ -50,10 +50,6 @@ export default function ProductPage (props){
             
                 <div className="post-results">
                         { postsList }
-                    <div className="post-result">
-                    </div>
-                    
-
                 </div>
             </section>
 
