@@ -1,27 +1,55 @@
 // PostPage - This is the page you are directed to when you select a post from post results on the product page
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './PostPage.css'
+import axios from 'axios'
+import MappedProducts from '../MappedProducts/MappedProducts'
 
-export default function PostPage (){
+
+export default function PostPage (props){
+    
+
+    const [post, setPost] = useState({})
+    const [products, setProducts] = useState(['world'])
+
+    useEffect(() => {
+        console.log('props', props.match.params.id)
+        axios.get(`/api/post/${props.match.params.id}`)
+        .then(res => {
+            setPost(res.data)
+        })
+        .catch(err => console.log(err))
+
+        axios.get(`/api/post-products/${props.match.params.id}`)
+        .then(res => setProducts(res.data))
+        .catch(err => console.log(err))
+        console.log('p',post)
+    },[props.match.params.id])
+
+    
+
+    const productsList = products.map((e, i) => {
+        console.log('e', e)
+        return <MappedProducts 
+                    key={`mapped product ${i}`}  
+                    image={e.img_url}
+                    product_id={e.product_id}
+                    />
+    })
+
     return(
         <div className="post-page">
             
             <h5>Selected Post</h5>
             <section className="post-photo-container">
-                {/* This is a photo of the post the user clicked on from the product page */}
+                { post.image && <img src={post.image} alt=' your selected post'/>}
             </section>
-            <h5>@instagram_profile</h5>
+    <h5>{post.ig_handle}</h5>
             
             <section className="search-results-container">
             <h5>Products in this post</h5>
-            {/* This is where we will render all products that are listed in the post we're looking at, the divs below are examples for wireframing purposes only */}
                 <div className="product-results">
-                    <div className="product-result"></div>
-                    <div className="product-result"></div>
-                    <div className="product-result"></div>
-                    <div className="product-result"></div>
-
+                    {productsList}
                 </div>
             </section>
 
