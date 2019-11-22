@@ -1,7 +1,7 @@
 import React from 'react'
 import './Nav.css'
 import {Link} from 'react-router-dom'
-import "../../../public/LogoOption1.png" 
+// import "../../../public/LogoOption1.png"
 
 class Nav extends React.Component {
     constructor(){
@@ -17,7 +17,7 @@ class Nav extends React.Component {
                 <Link to='/search'><section>SEARCH</section></Link>
                 {/* we need to make a about component if we want an about page. */}
                 <Link to='/about'><section>ABOUT</section></Link>
-                <Link to='/'><img src=""/></Link>
+                <Link to='/'><section>LOGO</section></Link>
                 <Link to='/register'><section>REGISTER</section></Link>
                 <Link to='/login'><section>LOGIN</section></Link>
             </nav>
