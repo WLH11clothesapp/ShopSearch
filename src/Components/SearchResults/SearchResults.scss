@@ -1,1 +1,11 @@
-@import "../../../sass/vars";
+@import '../../../sass/vars';
+
+.search-result {
+  border: $border;
+  height: 180px;
+  width: 140px;
+  // background-color: $accent-color;
+  background-position: center;
+  background-size: cover;
+  margin: 10px;
+}

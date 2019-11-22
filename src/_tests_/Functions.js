@@ -66,5 +66,57 @@ module.exports = {
       indexes[randomIndex] = temporaryValue;
     }
     return indexes;
+  },
+  filterCategories: categories => {
+    let output = [];
+    for (let key in categories) {
+      // console.log(this.props.categories[key]);
+      if (categories[key]) {
+        if (!output.includes(key)) {
+          output.push(key);
+        }
+      } else if (output.includes(key)) {
+        let index = output.indexOf(key);
+        output.splice(index, 1);
+      }
+    }
+    return output;
+  },
+  filterBrands: brands => {
+    let output = [];
+    for (let key in brands) {
+      // console.log(this.props.brands[key]);
+      if (brands[key]) {
+        if (!output.includes(key)) {
+          output.push(key);
+        }
+      } else {
+        if (output.includes(key)) {
+          let index = output.indexOf(key);
+          output.splice(index, 1);
+        }
+      }
+    }
+    return output;
+  },
+  sortItems: (products, filteredCategories, filteredBrands) => {
+    console.log(filteredBrands, filteredCategories);
+    let tempArray = [];
+    //if all brands/all categories are false return all items
+    for (let i = 0; i < products.length; i++) {
+      if (
+        filteredCategories.length === 0 ||
+        filteredCategories.includes(products[i].category)
+      ) {
+        if (
+          filteredBrands.length === 0 ||
+          filteredBrands.includes(products[i].brand)
+        ) {
+          tempArray.push(products[i]);
+        }
+      }
+    }
+    console.log(tempArray);
+    return tempArray;
   }
 };

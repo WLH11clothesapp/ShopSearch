@@ -1,10 +1,26 @@
 import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
+import { unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import renderer from 'react-test-renderer';
 import { HashRouter, Link } from 'react-router-dom';
+import {
+  products,
+  allBrandsFalse,
+  allBrandsTrue,
+  allCategoryFalse,
+  allCategoryTrue,
+  nordstromTrue,
+  shirtsTrue
+} from './vars';
 
-const { getProducts, validate, randomize } = require('./Functions');
+const {
+  getProducts,
+  validate,
+  randomize,
+  filterCategories,
+  filterBrands,
+  sortItems
+} = require('./Functions');
 
 describe('Testing get products endpoint', () => {
   let container = null;
@@ -164,7 +180,7 @@ describe('Testing routing', () => {
 });
 
 describe('Test the random number index functionality', () => {
-  //Andee
+  //Andee 1
   test('Put in an array of 10 numbers and check that they are in a different order', () => {
     const input = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let array;
@@ -172,5 +188,47 @@ describe('Test the random number index functionality', () => {
       array = randomize(input);
     });
     expect(array).not.toBe(input);
+  });
+});
+
+describe('Test Search Functionality', () => {
+  let filteredBrands;
+  let filteredCategories;
+  let productsArray;
+  //Andee 2
+  test('Filters the array of products correctly given the contraints: all categories true, all brands true', () => {
+    act(() => {
+      filteredCategories = filterCategories(allCategoryTrue);
+      filteredBrands = filterBrands(allBrandsTrue);
+      productsArray = sortItems(products, filteredCategories, filteredBrands);
+    });
+    expect(productsArray.length).toBe(3);
+  });
+  //Andee 3
+  test('Filters the array of products correctly given the contraints: all categories false, all brands false', () => {
+    act(() => {
+      filteredCategories = filterCategories(allCategoryFalse);
+      filteredBrands = filterBrands(allBrandsFalse);
+      productsArray = sortItems(products, filteredCategories, filteredBrands);
+    });
+    expect(productsArray.length).toBe(5);
+  });
+  //Andee 4
+  test('Filters the array of products correctly given the contraints: category-only shirts, all brands false', () => {
+    act(() => {
+      filteredCategories = filterCategories(shirtsTrue);
+      filteredBrands = filterBrands(allBrandsFalse);
+      productsArray = sortItems(products, filteredCategories, filteredBrands);
+    });
+    expect(productsArray.length).toBe(1);
+  });
+  //Andee 5
+  test('Filters the array of products correctly given the contraints: all categories false, brand-only Nordstrom', () => {
+    act(() => {
+      filteredCategories = filterCategories(allCategoryFalse);
+      filteredBrands = filterBrands(nordstromTrue);
+      productsArray = sortItems(products, filteredCategories, filteredBrands);
+    });
+    expect(productsArray.length).toBe(2);
   });
 });
