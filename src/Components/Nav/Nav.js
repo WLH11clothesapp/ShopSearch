@@ -14,7 +14,6 @@ class Nav extends React.Component {
             <nav className="nav">
                 {/* we need a ternary here: if there is NO user on session this nav will display, but if there IS a user on session, change register and login to profile and logout */}
                 <Link to='/search'><section>SEARCH</section></Link>
-                {/* we need to make a about component if we want an about page. */}
                 <Link to='/about'><section>ABOUT</section></Link>
                 <Link to='/'><section>LOGO</section></Link>
                 <Link to='/register'><section>REGISTER</section></Link>
