@@ -47,7 +47,7 @@ app.get("/api/product/:id", prodCtrl.getProduct);
 app.get("/api/post-products/:post_id", prodCtrl.getPostProducts);
 
 //// postController endpoints
-// app.post("/api/post", postCtrl.addPost);
+app.post("/api/post", postCtrl.addPost);
 app.get("/api/post/:id", postCtrl.getPost);
 app.get("/api/product-posts/:prod_id", postCtrl.getProductPosts);
 
