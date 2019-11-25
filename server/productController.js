@@ -21,15 +21,17 @@ module.exports = {
   },
 
   addProduct: async (req, res) => {
-    const {title, brand, category, url, post_id} = res.data
-    console.log('res.data', res.data)
-    const db = req.app.get('db');
-    let product_id = await db.check_product_url(url)
-    if(!product_id[0]){
-      product_id = await db.addProduct({title, brand, category, url, post_id}) 
-    }
-    product_id = product_id[0]
-    await db.add_product_link(posts_id, product_id);
-    res.sendStatus(200)
+    console.log('hit addProduct')
+    res.status(200).send('from addProduct in controller')
+  //   const {title, brand, category, url, post_id} = res.data
+  //   console.log('res.data', res.data)
+  //   const db = req.app.get('db');
+  //   let product_id = await db.check_product_url(url)
+  //   if(!product_id[0]){
+  //     product_id = await db.addProduct({title, brand, category, url, post_id}) 
+  //   }
+  //   product_id = product_id[0]
+  //   await db.add_product_link(posts_id, product_id);
+  //   res.sendStatus(200)
   }
 };

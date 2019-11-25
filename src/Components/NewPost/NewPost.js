@@ -35,8 +35,11 @@ function NewPost(props){
     }
 
     function makePost() {
-        axios.post("/api/post", { user_id:props.user.userId , image:url, text: ''})
-        .then(res => )
+        let data
+        axios.post("/api/post", )//{ user_id:props.user.userId , image:url, text: ''}
+        .then(res => {data = res.data})
+        .catch(err=>console.log(err))
+        console.log('data', data)
     }
 
     const decCount = () => {setProductCount(productCount - 1); console.log('dec')}
