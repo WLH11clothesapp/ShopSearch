@@ -1,4 +1,4 @@
-@import "../../../sass/vars";
+@import '../../../sass/vars';
 
 .landing-page {
   background-color: $background-color;
@@ -12,13 +12,16 @@
   background-color: $accent-color;
 }
 .landing-content-about {
-  border: $border;
+  // border: $border;
   width: 90vw;
-  height: 30vh;
+  height: 32vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10px 0;
+  background-image: url('./LandingTopSection.png');
+  background-size: cover;
+
 }
 .popular-products {
   border: $border;
@@ -44,14 +47,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.random-product-image {
+  height: 100%;
+  width: 100%;
   background-position: center;
   background-size: cover;
 }
 .landing-content-register {
   border: $border;
-  height: 12vh;
+  height: 30vh;
   width: 90vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('./LandingBottomSection-3.png');
+  background-size: cover;
 }

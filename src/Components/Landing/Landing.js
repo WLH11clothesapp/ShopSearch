@@ -1,6 +1,7 @@
 import React from "react";
 import LandingProducts from "../LandingProducts/LandingProducts";
 import "./Landing.css";
+import {Link} from 'react-router-dom'
 
 
 export default function Landing() {
@@ -8,8 +9,7 @@ export default function Landing() {
     <div className="landing-page">
       
       <section className="landing-content-about">
-        {" "}
-        Graphic with some "about our app" information, and our app's logo{" "}
+
       </section>
       <section className="popular-products">
         Explore our Popular Products
@@ -17,11 +17,9 @@ export default function Landing() {
           <LandingProducts />
         </div>
       </section>
-      <section className="landing-content-register">
-        {" "}
-        Graphic that links to Register component, "Ready to get started? Click
-        here to Register"
-      </section>
+      <Link to='/register'>
+        <section className="landing-content-register">
+      </section></Link>
     </div>
   );
 }
