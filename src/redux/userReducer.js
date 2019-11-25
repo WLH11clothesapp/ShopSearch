@@ -25,6 +25,7 @@ export function updateUser() {
 
 export default function reducer(state = initialState, action) {
   const { type, payload } = action;
+
   switch (type) {
     case UPDATE_USER + '_FULFILLED':
       console.log(payload);

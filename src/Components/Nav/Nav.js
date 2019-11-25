@@ -1,6 +1,5 @@
 import React from 'react';
 import './Nav.css';
-import { updateUser } from '../../redux/userReducer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -10,12 +9,17 @@ class Nav extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: {}
+      user_id: ''
     };
   }
-  componentDidUpdate = () => {
-    updateUser();
-  };
+  componentDidUpdate(prevProps) {
+    if (prevProps.user_id !== this.props.user_id) {
+      this.setState({
+        user_id: this.props.user_id
+      });
+      console.log('hit');
+    }
+  }
 
   logout = () => {
     axios
@@ -25,9 +29,7 @@ class Nav extends React.Component {
       })
       .catch(err => console.log(err));
   };
-
   render() {
-    console.log(this.props);
     return (
       <nav className='nav'>
         {/* we need a ternary here: if there is NO user on session this nav will display, but if there IS a user on session, change register and login to profile and logout */}
@@ -41,7 +43,7 @@ class Nav extends React.Component {
         <Link to='/'>
           <section>LOGO</section>
         </Link>
-        {this.props.name === {} ? (
+        {this.props.user_id ? (
           <>
             <Link to='/user'>
               <section>PROFILE</section>

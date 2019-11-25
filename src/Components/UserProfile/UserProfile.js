@@ -2,14 +2,25 @@
 import React from 'react';
 import './UserProfile.css';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 function UserProfile(props) {
+  const logout = () => {
+    axios
+      .post('/api/logout')
+      .then(() => {
+        this.props.history.push('/');
+      })
+      .catch(err => console.log(err));
+  };
   console.log(props);
   return (
     <div className='user-profile-page'>
       {/* we can personalize this greeting once the user logs in */}
       <h5>Welcome back, "User" </h5>
-      <button className='logout-button'>Log Out</button>
+      <button className='logout-button' onClick={() => logout}>
+        Log Out
+      </button>
       <h5>Create New Post:</h5>
       <section className='add-post-container'>+</section>
       <h5>Your Recent Posts:</h5>
