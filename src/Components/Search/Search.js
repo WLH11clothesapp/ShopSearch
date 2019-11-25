@@ -1,15 +1,21 @@
 //Search
-import React from 'react'
+import React, {useState} from 'react'
 import './Search.css'
+import SearchResults from '../SearchResults/SearchResults'
 
 export default function Search (){
+    const [urlInput, setUrlInput] = useState('')
+    const handleUrlInput = (value) => {
+        setUrlInput(value)
+        // console.log(urlInput)
+    }
     return(
         <div className="search-page">
             
             <section className="search-container">
                 <h5>Search Products</h5>
                 <h5>By URL:</h5>
-                <input placeholder="Enter the URL of your product"/>
+                <input placeholder="Enter the URL of your product" onChange={(e) => {handleUrlInput(e.target.value)}}/>
                 <h5>By Category:</h5>
                 <div className="category-container">
                     {/* I added divs here just to package the input and input label together for styling purposes */}
@@ -34,12 +40,10 @@ export default function Search (){
                 <h5>Search Results</h5>
             {/* This is where we will render the SearchResults component and map over the results, the following divs just show an idea of how it will look */}
                 <div className="search-results">
-                    <div className="search-result"></div>
-                    <div className="search-result"></div>
-                    <div className="search-result"></div>
-                    <div className="search-result"></div>
-                    <div className="search-result"></div>
-                    <div className="search-result"></div>
+                    <SearchResults 
+                        urlInput={urlInput}
+                        />
+                    
 
                 </div>
             </section>
