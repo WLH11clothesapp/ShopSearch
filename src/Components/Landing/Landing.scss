@@ -12,13 +12,16 @@
   background-color: $accent-color;
 }
 .landing-content-about {
-  border: $border;
+  // border: $border;
   width: 90vw;
-  height: 30vh;
+  height: 32vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10px 0;
+  background-image: url('./LandingTopSection.png');
+  background-size: cover;
+
 }
 .popular-products {
   border: $border;
@@ -49,9 +52,11 @@
 }
 .landing-content-register {
   border: $border;
-  height: 12vh;
+  height: 30vh;
   width: 90vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('./LandingBottomSection-3.png');
+  background-size: cover;
 }

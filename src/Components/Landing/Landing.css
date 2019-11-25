@@ -19,9 +19,8 @@
 }
 
 .landing-content-about {
-  border: lightgrey 0.1px solid;
   width: 90vw;
-  height: 30vh;
+  height: 32vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -32,6 +31,8 @@
       -ms-flex-align: center;
           align-items: center;
   margin: 10px 0;
+  background-image: url("./LandingTopSection.png");
+  background-size: cover;
 }
 
 .popular-products {
@@ -78,7 +79,7 @@
 
 .landing-content-register {
   border: lightgrey 0.1px solid;
-  height: 12vh;
+  height: 30vh;
   width: 90vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -89,5 +90,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-image: url("./LandingBottomSection-3.png");
+  background-size: cover;
 }
 /*# sourceMappingURL=Landing.css.map */
