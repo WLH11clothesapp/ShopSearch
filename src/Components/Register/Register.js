@@ -22,6 +22,7 @@ function Register(props) {
         password: state.password
       })
       .then(res => {
+        props.updateUser();
         props.history.push('/userprofile');
       })
       .catch(err => {

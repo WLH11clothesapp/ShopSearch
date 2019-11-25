@@ -1,21 +1,26 @@
 import React from 'react';
 import './Nav.css';
-import { updateUser } from '../../redux/userReducer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 // import "../../../public/LogoOption1.png"
 
 class Nav extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: {}
+      user_id: ''
     };
   }
-  componentDidUpdate = () => {
-    updateUser();
-  };
+  componentDidUpdate(prevProps) {
+    if (prevProps.user_id !== this.props.user_id) {
+      this.setState({
+        user_id: this.props.user_id
+      });
+      console.log('hit');
+    }
+  }
 
   logout = () => {
     axios
@@ -25,23 +30,21 @@ class Nav extends React.Component {
       })
       .catch(err => console.log(err));
   };
-
   render() {
-    console.log(this.props);
     return (
       <nav className='nav'>
         {/* we need a ternary here: if there is NO user on session this nav will display, but if there IS a user on session, change register and login to profile and logout */}
-        
+
         {/* we need to make a about component if we want an about page. */}
-        
+
         <Link to='/'>
-          <section className="logo-container"></section>
+          <section className='logo-container'></section>
         </Link>
-        
+
         <Link to='/about'>
           <section>ABOUT</section>
         </Link>
-        {this.props.name === {} ? (
+        {this.props.user_id ? (
           <>
             <Link to='/user'>
               <section>PROFILE</section>
@@ -60,7 +63,9 @@ class Nav extends React.Component {
           </>
         )}
         <Link to='/search'>
-          <section><i class="fas fa-search"></i></section>
+          <section>
+            <i class='fas fa-search'></i>
+          </section>
         </Link>
       </nav>
     );
@@ -77,4 +82,4 @@ const mapStateToProps = reduxState => {
   };
 };
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps)(withRouter(Nav));
