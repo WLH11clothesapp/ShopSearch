@@ -3,6 +3,7 @@ import './Nav.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 // import "../../../public/LogoOption1.png"
 
 class Nav extends React.Component {
@@ -33,15 +34,15 @@ class Nav extends React.Component {
     return (
       <nav className='nav'>
         {/* we need a ternary here: if there is NO user on session this nav will display, but if there IS a user on session, change register and login to profile and logout */}
-        <Link to='/search'>
-          <section>SEARCH</section>
-        </Link>
+
         {/* we need to make a about component if we want an about page. */}
+
+        <Link to='/'>
+          <section className='logo-container'></section>
+        </Link>
+
         <Link to='/about'>
           <section>ABOUT</section>
-        </Link>
-        <Link to='/'>
-          <section>LOGO</section>
         </Link>
         {this.props.user_id ? (
           <>
@@ -61,6 +62,11 @@ class Nav extends React.Component {
             </Link>
           </>
         )}
+        <Link to='/search'>
+          <section>
+            <i class='fas fa-search'></i>
+          </section>
+        </Link>
       </nav>
     );
   }
@@ -76,4 +82,4 @@ const mapStateToProps = reduxState => {
   };
 };
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps)(withRouter(Nav));
