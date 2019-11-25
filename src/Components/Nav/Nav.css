@@ -11,4 +11,14 @@
       -ms-flex-align: center;
           align-items: center;
 }
+
+.nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav a:hover {
+  padding-bottom: 5px;
+  border-bottom: solid black;
+}
 /*# sourceMappingURL=Nav.css.map */

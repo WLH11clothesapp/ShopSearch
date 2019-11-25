@@ -34,22 +34,22 @@ massive(CONNECTION_STRING).then(db => {
 
 //// authController endpoints
 app.post("/api/login", authCtrl.login);
-app.post("/api/register", authCtrl.register);
+app.post("/api/register",  authCtrl.register);
 // app.post("/api/logout", authCtrl.logout);
 // app.get("/api/user", authCtrl.getUser);
 
 //// productController endpoints
 app.get("/api/products", prodCtrl.getProducts);
 // app.get("/api/search/", prodCtrl.searchProducts); // use queary
-// app.get("/api/product/:prod_id", prodCtrl.getProduct);
+app.get("/api/product/:id", prodCtrl.getProduct);
 // app.post("/api/product", prodCtrl.addProduct);
 // app.post("/api/brands", prodCtrl.getBrands);
-// app.get("/api/post-products/post_id", prodCtrl.getPostProducts);
+app.get("/api/post-products/:post_id", prodCtrl.getPostProducts);
 
 //// postController endpoints
 // app.post("/api/post", postCtrl.addPost);
-// app.get("/api/post/:post_id", postCtrl.getPost);
-// app.get("/api/product-posts", postCtrl.getProductPosts);
+app.get("/api/post/:id", postCtrl.getPost);
+app.get("/api/product-posts/:prod_id", postCtrl.getProductPosts);
 
-///add listner
+///add listener
 app.listen(SERVER_PORT, () => console.log(`Server on ${SERVER_PORT}`));

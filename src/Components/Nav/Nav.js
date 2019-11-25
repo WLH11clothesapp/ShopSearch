@@ -1,6 +1,7 @@
 import React from 'react'
 import './Nav.css'
 import {Link} from 'react-router-dom'
+// import "../../../public/LogoOption1.png"
 
 class Nav extends React.Component {
     constructor(){
