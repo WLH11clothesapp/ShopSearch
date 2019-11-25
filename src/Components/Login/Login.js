@@ -17,7 +17,7 @@ function Login(props) {
         password: state.password
       })
       .then(res => {
-        props.updateUser();
+        // props.updateUser();
         props.history.push('/userprofile');
       })
       .catch(err => console.log(err));

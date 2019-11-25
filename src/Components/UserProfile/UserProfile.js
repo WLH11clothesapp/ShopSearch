@@ -17,7 +17,7 @@ function UserProfile(props) {
   return (
     <div className='user-profile-page'>
       {/* we can personalize this greeting once the user logs in */}
-      <h5>Welcome back, "User" </h5>
+      <h5>Welcome back, {props.name} </h5>
       <button className='logout-button' onClick={() => logout}>
         Log Out
       </button>

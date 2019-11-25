@@ -4,15 +4,21 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { updateUser } from '../../redux/userReducer';
 // import "../../../public/LogoOption1.png"
 
 class Nav extends React.Component {
   constructor() {
     super();
     this.state = {
-      user_id: ''
+      user_id: 0
     };
   }
+
+  componentDidMount() {
+    this.props.updateUser();
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.user_id !== this.props.user_id) {
       this.setState({
@@ -44,9 +50,9 @@ class Nav extends React.Component {
         <Link to='/about'>
           <section>ABOUT</section>
         </Link>
-        {this.props.user_id ? (
+        {this.props.user_id !== 0 ? (
           <>
-            <Link to='/user'>
+            <Link to='/userprofile'>
               <section>PROFILE</section>
             </Link>
             <section onClick={this.logout}>LOG OUT</section>
@@ -64,7 +70,7 @@ class Nav extends React.Component {
         )}
         <Link to='/search'>
           <section>
-            <i class='fas fa-search'></i>
+            <i className='fas fa-search'></i>
           </section>
         </Link>
       </nav>
@@ -82,4 +88,8 @@ const mapStateToProps = reduxState => {
   };
 };
 
-export default connect(mapStateToProps)(withRouter(Nav));
+const mapDispatchToProps = {
+  updateUser
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Nav));

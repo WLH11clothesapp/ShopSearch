@@ -21,7 +21,7 @@ app.use(
     saveUninitialized: true,
     secret: SESSION_SECRET,
     cookie: {
-      maxAge: 3600000
+      maxAge: 60 * 60 * 1000
     }
   })
 );
