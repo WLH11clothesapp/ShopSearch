@@ -1,9 +1,11 @@
 //NewPost
 import React from 'react'
+import axios from 'axios'
 import './NewPost.css'
+
 import AddProduct from '../AddProduct/AddProduct'
 
-export default function NewPost(){
+function NewPost(props){
 
     const [url, setUrl] = React.useState('');
     const [newProducts, setNewProducts] = React.useState([])
@@ -26,8 +28,15 @@ export default function NewPost(){
     };
 
     const grabInfo= (index, stateObj) => {
+        console.log('index', index)
+        console.log('stateObj', stateObj)
         info[index] = stateObj
         console.log(info)
+    }
+
+    function makePost() {
+        axios.post("/api/post", { user_id:props.user.userId , image:url, text: ''})
+        .then(res => )
     }
 
     const decCount = () => {setProductCount(productCount - 1); console.log('dec')}
@@ -56,8 +65,10 @@ export default function NewPost(){
                <button className="add-product-button" onClick={incCount}> + Add Another Product</button>
                {productCount > 1 && <button className="add-product-button" onClick={decCount}> - remove a Product</button>}  
                </div>
-               <button className="add-post-button">Add Post</button>
+               <button className="add-post-button" onClick={makePost}>Add Post</button>
            </section>
         </div>
     )
 }
+
+export default NewPost

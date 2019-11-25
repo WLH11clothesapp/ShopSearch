@@ -9,13 +9,14 @@ function AddProduct(props) {
         url: ''
     })
 
+
     const handleChange = event => {
         /// handle changes for typing in input boxes where hook is called
         setState({
           ...state,
           [event.target.name]: event.target.value
         });
-        props.grabInfo(state)
+        props.grabInfo(props.index, state)
       };
 
     return (
