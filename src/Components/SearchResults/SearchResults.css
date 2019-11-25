@@ -1,1 +1,9 @@
-/* No CSS *//*# sourceMappingURL=SearchResults.css.map */
+.search-result {
+  border: lightgrey 0.1px solid;
+  height: 180px;
+  width: 140px;
+  background-position: center;
+  background-size: cover;
+  margin: 10px;
+}
+/*# sourceMappingURL=SearchResults.css.map */
