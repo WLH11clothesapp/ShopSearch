@@ -1,7 +1,9 @@
 import React from 'react';
 import './Nav.css';
+import { updateUser } from '../../redux/userReducer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { connect } from 'react-redux';
 // import "../../../public/LogoOption1.png"
 
 class Nav extends React.Component {
@@ -11,11 +13,8 @@ class Nav extends React.Component {
       user: {}
     };
   }
-  componentDidMount = () => {
-    axios
-      .get('/api/user')
-      .then(res => this.setState({ user: res.data }))
-      .catch(err => console.log(err));
+  componentDidUpdate = () => {
+    updateUser();
   };
 
   logout = () => {
@@ -28,6 +27,7 @@ class Nav extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <nav className='nav'>
         {/* we need a ternary here: if there is NO user on session this nav will display, but if there IS a user on session, change register and login to profile and logout */}
@@ -41,7 +41,7 @@ class Nav extends React.Component {
         <Link to='/'>
           <section>LOGO</section>
         </Link>
-        {this.state.user === {} ? (
+        {this.props.name === {} ? (
           <>
             <Link to='/user'>
               <section>PROFILE</section>
@@ -63,4 +63,15 @@ class Nav extends React.Component {
     );
   }
 }
-export default Nav;
+
+const mapStateToProps = reduxState => {
+  const { user_id, email, name, ig_handle } = reduxState;
+  return {
+    user_id,
+    email,
+    name,
+    ig_handle
+  };
+};
+
+export default connect(mapStateToProps)(Nav);

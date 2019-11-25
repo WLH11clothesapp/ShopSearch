@@ -1,18 +1,18 @@
-import React from "react";
-import "./App.css";
-import { HashRouter } from "react-router-dom";
-import routes from "./routes";
-import Nav from './Components/Nav/Nav'
+import React from 'react';
+import './App.css';
+import { HashRouter } from 'react-router-dom';
+import routes from './routes';
+import store from './redux/store';
+import { Provider } from 'react-redux';
 
-function App() {
+const App = () => {
   return (
-    <HashRouter>
-      <div className="App">
-      <Nav/>
-      {routes}
-      </div>
-    </HashRouter>
+    <Provider store={store}>
+      <HashRouter>
+        <div className='App'>{routes}</div>
+      </HashRouter>
+    </Provider>
   );
-}
+};
 
 export default App;
