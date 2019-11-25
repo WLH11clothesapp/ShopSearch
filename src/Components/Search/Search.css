@@ -20,7 +20,8 @@
   width: 90vw;
 }
 
-.category-container, .brand-container {
+.category-container,
+.brand-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -54,14 +55,5 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-.search-result {
-  border: lightgrey 0.1px solid;
-  height: 180px;
-  width: 140px;
-  background-position: center;
-  background-size: cover;
-  margin: 10px;
 }
 /*# sourceMappingURL=Search.css.map */

@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAEA,AAAA,cAAc,CAAC;EACb,MAAM,ECAC,SAAS,CAAC,KAAK,CAAC,KAAK;EDC5B,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;EAEZ,mBAAmB,EAAE,MAAM;EAC3B,eAAe,EAAE,KAAK;EACtB,MAAM,EAAE,IAAI;CACb",
     "sources": [
         "SearchResults.scss",
         "../../../sass/_vars.scss"
