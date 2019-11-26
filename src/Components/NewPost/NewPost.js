@@ -91,5 +91,5 @@ function mapStateToProps(reactState) {
     return {  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewPost) 
+export default connect(mapStateToProps, null)(NewPost) 
 
