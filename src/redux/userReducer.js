@@ -9,26 +9,33 @@ const initialState = {
 
 const UPDATE_USER = 'UPDATE_USER';
 
-export function updateUser (userObj){
+export function updateUser(userObj) {
   return {
-      type: UPDATE_USER,
-      payload: userObj
-  }
+    type: UPDATE_USER,
+    payload: userObj
+  };
+}
+
+export function resetUser() {
+  return {
+    type: UPDATE_USER,
+    payload: initialState
+  };
 }
 
 export default function reducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case UPDATE_USER :
+    case UPDATE_USER:
       // console.log(payload);
       return {
-            ...state,
-            email: payload.email,
-            name: payload.name,
-            ig_handle: payload.ig_handle,
-            user_id: payload.user_id
-          }
+        ...state,
+        email: payload.email,
+        name: payload.name,
+        ig_handle: payload.ig_handle,
+        user_id: payload.user_id
+      };
     default:
       return state;
   }
