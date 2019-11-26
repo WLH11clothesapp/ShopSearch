@@ -24,3 +24,32 @@ VALUES
 (3,4),
 (4,4),
 (4,5)
+
+insert into posts 
+(user_id, image, text) 
+values
+(5, 'https://images.liketoknow.it/2bb5ffe4-f6a6-11e9-9fed-0242ac110002?fm=jpeg&auto=format&w=405&dpr=2', 'Found: the *perfect* sweater dress! It’s just the right length, fits perfectly, is cozy soft & LESS THAN $100. From @nordstrom, of course 😊')
+
+
+
+INSERT INTO products
+(title, brand, category, url, img_url)
+VALUES
+('Seasonal Pullover Sweater', 'Nordstrom', 'Outerwear', 'https://shop.nordstrom.com/s/treasure-bond-seasonal-pullover-sweater/5017990/full?origin=keywordsearch-personalizedsort&breadcrumb=Home%2FAll%20Results&color=black', 'https://n.nordstrommedia.com/id/sr3/2931e5b4-d485-4d58-911d-0bb68df8b50b.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&dpr=1.5'),
+('Slouchy Turtleneck Sweater', 'Walmart', 'Outerwear', 'https://www.walmart.com/ip/Scoop-Slouchy-Turtleneck-Sweater-Women-s/456917138', 'https://i5.walmartimages.com/asr/0bd02cf4-a21c-4bf9-b97a-951555d6c342_1.93bf9c01284ae10dfc3a31609afdd3ee.jpeg?odnWidth=undefined&odnHeight=undefined&odnBg=ffffff'),
+('Penny Microsuede High Heel Slouch Boot', 'Walmart', 'Shoes', 'https://www.walmart.com/ip/Scoop-Penny-Microsuede-High-Heel-Slouch-Boot-Women-s/108657039', 'https://i5.walmartimages.com/asr/7ae1d62b-6143-4f49-a4f0-e68631cc8c35_1.a2fb81732e174891ff3e4146072d12ed.jpeg?odnWidth=undefined&odnHeight=undefined&odnBg=ffffff'),
+('Faux Python Snake Top Handle Crossbody', 'Walmart', 'Accessories', 'https://www.walmart.com/ip/Scoop-Faux-Python-Snake-Top-Handle-Crossbody/337150228', 'https://i5.walmartimages.com/asr/f5bd8d5b-91f2-456d-99fc-1755d3461398_2.b9e5f15e4b9e370b37e951e7bba54dcc.jpeg?odnWidth=undefined&odnHeight=undefined&odnBg=ffffff'),
+("Ultimate Wide Brim Velour Fedora", 'Walmart', 'Accessories', 'https://www.walmart.com/ip/Scoop-Ultimate-Wide-Brim-Velour-Fedora-Women-s/780981429', 'https://i5.walmartimages.com/asr/02bd12e7-0746-4d94-bf67-73b750e3006b_1.fb0d6eba8d19258ee42b8d4694e6db78.jpeg?odnWidth=undefined&odnHeight=undefined&odnBg=ffffff'),
+('Wide Brim Fedora with Chain', 'Walmart', 'Accessories', 'https://www.walmart.com/ip/Scoop-Wide-Brim-Fedora-with-Chain-Women-s/101021563', 'https://i5.walmartimages.com/asr/22baed05-4db8-4fe9-bf2b-ba198cdfc8ae_1.18d449ed118fff7b7ecfe5b2cecc49b1.jpeg?odnWidth=undefined&odnHeight=undefined&odnBg=ffffff'),
+("No Boundaries Juniors' High Waisted Jegging", 'Walmart', 'Pants', 'https://www.walmart.com/ip/No-Boundaries-Juniors-High-Waisted-Jegging/445093680?', 'https://i5.walmartimages.com/asr/f1e007ce-b8ac-491a-870f-c15c0a3b2b44_1.196264e04a0328a662e91229f0a5498c.jpeg?odnWidth=undefined&odnHeight=undefined&odnBg=ffffff')
+
+INSERT INTO posts_products
+(post_id, product_id)
+VALUES 
+(53, 12),
+(53, 13),
+(53, 14),
+(53, 15),
+(53, 16),
+(53, 17),
+(53, 18);

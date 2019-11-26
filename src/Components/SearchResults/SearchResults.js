@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './SearchResults.css';
+import { Link } from 'react-router-dom';
 
 export default class SearchResults extends Component {
   constructor() {
@@ -86,7 +87,6 @@ export default class SearchResults extends Component {
     // console.log(this.props);
     this.filterBrands();
     this.filterCategories();
-    let tempArray = [];
     // console.log(this.state.filteredCategories);
     if (prevProps !== this.props) {
       if (this.props.urlInput === '') {
@@ -117,10 +117,12 @@ export default class SearchResults extends Component {
       <>
         {this.state.products.map((e, i) => {
           return (
-            <div
-              className='search-result'
-              style={{ backgroundImage: `url(${e.img_url})` }}
-            ></div>
+            <Link to={`/product/${e.product_id}`}>
+              <div
+                className='search-result'
+                style={{ backgroundImage: `url(${e.img_url})` }}
+              ></div>
+            </Link>
           );
         })}
       </>
