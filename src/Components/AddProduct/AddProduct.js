@@ -9,14 +9,23 @@ function AddProduct(props) {
         url: ''
     })
     
+    let obj = {    ///state takes a second to hold values so it makes so the last change isn't sent this obj is just to makes so it hold it
+        title:'',
+        category: '',
+        brand: '',
+        image: '',
+        url: ''
+    }
+    
 
-    const  handleChange =  async e => {
+    const handleChange = e => {
         /// handle changes for typing in input boxes where hook is called
-        await setState({
-          ...state,
-          [e.target.name]: e.target.value
-        });
-        props.grabInfo(props.index, state)
+        obj= {...state, [e.target.name]: e.target.value}
+        
+        setState(obj);
+        props.grabInfo(props.index, obj)
+
+        console.log('state', state)
     };
 
     return (

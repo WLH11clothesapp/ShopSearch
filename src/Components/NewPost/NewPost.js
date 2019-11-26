@@ -27,14 +27,16 @@ function NewPost(props){
     }
 
     async function  makePost() {
+        
         let post_id = await axios.post("/api/post", { 
-            user_id:   1 , 
+            user_id:  1 ,   /// built this way so we don't have to login every time to work on this page
             image:url, 
             text: 'word'}) 
         .then(res => {
             console.log(res.data)
            return res.data})
         .catch(err=>console.log(err))
+
         console.log('post_id', post_id)
         
         for(let j = 0; j < productCount; j++){
@@ -73,9 +75,9 @@ function NewPost(props){
                <input value={url} onChange={handleUrlChange} placeholder="Copy and paste your img URL here"/>
                <h5> Add Products:</h5>
                
-                {newProductsList}
+                {newProductsList} {/* displays addProduct * product count */}
                 
-               {/* This button will create another add-product-container to this screen, giving the user the option of adding more than 1 product to their post */}
+               
                <div className="add-product-button-styler">
                <button className="add-product-button" onClick={incCount}> + Add Another Product</button>
                {productCount > 1 && <button className="add-product-button" onClick={decCount}> - remove a Product</button>}  
@@ -86,10 +88,10 @@ function NewPost(props){
     )
 }
 
-function mapStateToProps(reactState) {
-    const {  } = reactState
-    return {  }
+function mapStateToProps(reactState) {  ///grabs user_id off of state
+    const { user_id } = reactState
+    return { user_id }
 }
 
-export default connect(mapStateToProps, null)(NewPost) 
+export default connect(mapStateToProps, null)(NewPost) //connect to redux
 
