@@ -1,13 +1,15 @@
 const bcrypt = require('bcryptjs');
 module.exports = {
   logout: (req, res) => {
-    req.session.destroy;
+    req.session.destroy();
     res.sendStatus(200);
   },
   getUser: (req, res) => {
+    console.log('getUser backend hit')
+    
     if (req.session.user) {
       res.status(200).send(req.session.user);
-    }
+    } 
   },
   register: async (req, res) => {
     const db = req.app.get('db');
