@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { updateUser } from '../../redux/userReducer';
-// import "../../../public/LogoOption1.png"
+import {updateUser} from '../../redux/userReducer'
 
 class Nav extends React.Component {
   componentDidMount() {
@@ -17,15 +16,28 @@ class Nav extends React.Component {
       })
       .catch(err => console.log(err));
   }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.user_id !== this.props.user_id) {
-      this.setState({
-        user_id: this.props.user_id
-      });
-      console.log('hit');
-    }
-  }
+  componentDidMount = () => {
+    console.log('nav mounted')
+    axios.get('/api/user')
+    .then(res => {
+        this.props.updateUser(res.data)
+        console.log('nav .then hit ', res.data)
+    })
+    .catch(err => console.log('err hit', err))
+    
+}
+  
+  // componentDidUpdate (prevProps) {
+    
+  //   if (prevProps !== this.props) {
+  //     // this.props.updateUser()
+  //     this.setState({
+  //       user_id: this.props.user_id
+  //     });
+    
+  //   console.log('nav didUpdate hit')
+  //   }
+  // }
 
   logout = () => {
     axios
@@ -36,13 +48,10 @@ class Nav extends React.Component {
       .catch(err => console.log(err));
   };
   render() {
-    console.log(this.props);
+    console.log(this.props)
     return (
       <nav className='nav'>
-        {/* we need a ternary here: if there is NO user on session this nav will display, but if there IS a user on session, change register and login to profile and logout */}
-
-        {/* we need to make a about component if we want an about page. */}
-
+      
         <Link to='/'>
           <section className='logo-container'></section>
         </Link>
@@ -90,6 +99,6 @@ const mapStateToProps = reduxState => {
 
 const mapDispatchToProps = {
   updateUser
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Nav));

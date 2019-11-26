@@ -7,8 +7,10 @@ import { updateUser } from '../../redux/userReducer';
 import { connect } from 'react-redux';
 
 function Login(props) {
+  // const loginButton = useRef(null);
+
   function handleClick() {
-    // console.log('props', props)
+    console.log('login handle click hit');
     axios
       .post('/api/login', {
         email: state.email,
@@ -63,6 +65,7 @@ function Login(props) {
         <button
           id='login-button'
           className='complete-login'
+          // ref={loginButton}
           onClick={handleSubmit}
         >
           {' '}
