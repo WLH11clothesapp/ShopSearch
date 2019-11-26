@@ -20,6 +20,10 @@
   width: 90vw;
 }
 
+.search-container button {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
 .category-container,
 .brand-container {
   display: -webkit-box;
@@ -56,4 +60,3 @@
       -ms-flex-pack: center;
           justify-content: center;
 }
-/*# sourceMappingURL=Search.css.map */

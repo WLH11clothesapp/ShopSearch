@@ -25,6 +25,7 @@
 }
 
 input {
+  font-family: 'Open Sans Condensed', sans-serif;
   width: 70%;
   background-color: #daf2e7;
 }
@@ -42,4 +43,3 @@ input {
 .inputError {
   border-color: red;
 }
-/*# sourceMappingURL=Register.css.map */

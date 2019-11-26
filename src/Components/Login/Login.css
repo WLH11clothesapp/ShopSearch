@@ -13,6 +13,10 @@
           align-items: center;
 }
 
+.login-page button {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
 .placeholder {
   height: 10vh;
   background-color: #daf2e7;
@@ -48,4 +52,3 @@ input {
       -ms-flex-align: center;
           align-items: center;
 }
-/*# sourceMappingURL=Login.css.map */
