@@ -1,21 +1,43 @@
 import React from 'react';
 import './Nav.css';
-import { updateUser } from '../../redux/userReducer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
-// import "../../../public/LogoOption1.png"
+import { withRouter } from 'react-router-dom';
+import {updateUser} from '../../redux/userReducer'
 
 class Nav extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      user: {}
-    };
+  componentDidMount() {
+    axios
+      .get('/api/user')
+      .then(res => {
+        console.log(res.data);
+        updateUser(res.data);
+      })
+      .catch(err => console.log(err));
   }
-  componentDidUpdate = () => {
-    updateUser();
-  };
+  componentDidMount = () => {
+    console.log('nav mounted')
+    axios.get('/api/user')
+    .then(res => {
+        this.props.updateUser(res.data)
+        console.log('nav .then hit ', res.data)
+    })
+    .catch(err => console.log('err hit', err))
+    
+}
+  
+  // componentDidUpdate (prevProps) {
+    
+  //   if (prevProps !== this.props) {
+  //     // this.props.updateUser()
+  //     this.setState({
+  //       user_id: this.props.user_id
+  //     });
+    
+  //   console.log('nav didUpdate hit')
+  //   }
+  // }
 
   logout = () => {
     axios
@@ -25,25 +47,21 @@ class Nav extends React.Component {
       })
       .catch(err => console.log(err));
   };
-
   render() {
-    console.log(this.props);
+    console.log(this.props)
     return (
       <nav className='nav'>
-        {/* we need a ternary here: if there is NO user on session this nav will display, but if there IS a user on session, change register and login to profile and logout */}
-        
-        {/* we need to make a about component if we want an about page. */}
-        
+      
         <Link to='/'>
-          <section className="logo-container"></section>
+          <section className='logo-container'></section>
         </Link>
-        
+
         <Link to='/about'>
           <section>ABOUT</section>
         </Link>
-        {this.props.name === {} ? (
+        {this.props.user_id !== 0 ? (
           <>
-            <Link to='/user'>
+            <Link to='/userprofile'>
               <section>PROFILE</section>
             </Link>
             <section onClick={this.logout}>LOG OUT</section>
@@ -60,7 +78,9 @@ class Nav extends React.Component {
           </>
         )}
         <Link to='/search'>
-          <section><i class="fas fa-search"></i></section>
+          <section>
+            <i className='fas fa-search'></i>
+          </section>
         </Link>
       </nav>
     );
@@ -77,4 +97,8 @@ const mapStateToProps = reduxState => {
   };
 };
 
-export default connect(mapStateToProps)(Nav);
+const mapDispatchToProps = {
+  updateUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Nav));

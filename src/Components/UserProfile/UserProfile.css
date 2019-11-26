@@ -49,9 +49,9 @@
 }
 
 .user-post {
-  background-color: #e3f2ff;
+  background-size: cover;
+  background-position: center;
   height: 160px;
   width: 140px;
   margin: 10px;
 }
-/*# sourceMappingURL=UserProfile.css.map */
