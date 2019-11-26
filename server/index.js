@@ -21,7 +21,7 @@ app.use(
     saveUninitialized: true,
     secret: SESSION_SECRET,
     cookie: {
-      maxAge: 3600000
+      maxAge: 60 * 60 * 1000
     }
   })
 );
@@ -42,14 +42,15 @@ app.get('/api/user', authCtrl.getUser);
 app.get('/api/products', prodCtrl.getProducts);
 // app.get("/api/search/", prodCtrl.searchProducts); // use queary
 app.get('/api/product/:id', prodCtrl.getProduct);
-app.post("/api/product", prodCtrl.addProduct);
+app.post('/api/product', prodCtrl.addProduct);
 // app.post("/api/brands", prodCtrl.getBrands);
 app.get('/api/post-products/:post_id', prodCtrl.getPostProducts);
 
 //// postController endpoints
-app.post("/api/post", postCtrl.addPost);
-app.get("/api/post/:id", postCtrl.getPost);
-app.get("/api/product-posts/:prod_id", postCtrl.getProductPosts);
+app.post('/api/post', postCtrl.addPost);
+app.get('/api/posts/:id', postCtrl.getPosts);
+app.get('/api/post/:id', postCtrl.getPost);
+app.get('/api/product-posts/:prod_id', postCtrl.getProductPosts);
 
 ///add listener
 app.listen(SERVER_PORT, () => console.log(`Server on ${SERVER_PORT}`));

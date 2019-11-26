@@ -10,7 +10,7 @@ function Login(props) {
   // const loginButton = useRef(null);
 
   function handleClick() {
-    console.log('login handle click hit')
+    console.log('login handle click hit');
     axios
       .post('/api/login', {
         email: state.email,

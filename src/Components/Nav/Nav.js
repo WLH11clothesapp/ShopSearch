@@ -7,11 +7,14 @@ import { withRouter } from 'react-router-dom';
 import {updateUser} from '../../redux/userReducer'
 
 class Nav extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      user_id: ''
-    };
+  componentDidMount() {
+    axios
+      .get('/api/user')
+      .then(res => {
+        console.log(res.data);
+        updateUser(res.data);
+      })
+      .catch(err => console.log(err));
   }
   componentDidMount = () => {
     console.log('nav mounted')
@@ -56,9 +59,9 @@ class Nav extends React.Component {
         <Link to='/about'>
           <section>ABOUT</section>
         </Link>
-        {this.props.user_id ? (
+        {this.props.user_id !== 0 ? (
           <>
-            <Link to='/user'>
+            <Link to='/userprofile'>
               <section>PROFILE</section>
             </Link>
             <section onClick={this.logout}>LOG OUT</section>
@@ -76,7 +79,7 @@ class Nav extends React.Component {
         )}
         <Link to='/search'>
           <section>
-            <i class='fas fa-search'></i>
+            <i className='fas fa-search'></i>
           </section>
         </Link>
       </nav>
