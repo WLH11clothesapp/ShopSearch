@@ -1,5 +1,78 @@
 @import "../../../sass/vars";
 
 .About{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+}
+.about-intro{
+    height: 19vh;
+    width: 90vw;
+    background-image: url('./AboutLTK-2.png');
+    background-size: cover;
+    background-position: center;
+}
+.about-steps{
+    // border: $border;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
     
+}
+.about-step1{
+    border: $border;
+    background-color: $accent-color;
+    width: 90%;
+    margin: 10px 0;
+    // display: flex;
+}
+.about-step2{
+    border: $border;
+    background-color: $accent-color;
+    width: 90%;
+    margin: 10px 0;
+}
+.about-step3{
+    border: $border;
+    background-color: $accent-color;
+    width: 90%;
+    margin: 10px 0;
+}
+#step1-img-container{
+    border: $border;
+    height: 150px;
+    width: 150px;
+    background-image: url('1..png');
+    background-size: cover;
+    float: left;
+    margin: 5px;
+    
+}
+#step2-img-container{
+    border: $border;
+    height: 150px;
+    width: 150px;
+    background-image: url('2..png');
+    background-size: cover;
+    float: right;
+    margin: 5px;
+}
+#step3-img-container{
+    border: $border;
+    height: 150px;
+    width: 150px;
+    background-image: url('3..png');
+    background-size: cover;
+    margin: 5px;
+    float: left;
+}
+.about-text{
+    margin: 5px;
+
+}
+h3{
+    margin: 5px;
 }

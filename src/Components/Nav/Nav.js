@@ -58,10 +58,10 @@ class Nav extends React.Component {
         </Link>
         {this.props.user_id ? (
           <>
-            <Link to='/user'>
+            <Link to='/userprofile'>
               <section>PROFILE</section>
             </Link>
-            <section onClick={this.logout}>LOG OUT</section>
+            <section onClick={() => this.logout()}>LOG OUT</section>
           </>
         ) : (
           <>
