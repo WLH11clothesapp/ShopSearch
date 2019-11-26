@@ -32,9 +32,7 @@ function Login(props) {
     <div className='login-page'>
       <p className='login-info'>
         Are you new to ti.wonkotekil? Click here to Register new account
-        <Link to='/register'>
-          <button>here</button>
-        </Link>
+        <Link to='/register'> here</Link>
       </p>
 
       <section className='login-form'>

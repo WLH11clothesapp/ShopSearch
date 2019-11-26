@@ -10,6 +10,9 @@
   border: $border;
   margin: 10px 0;
   width: 90vw;
+  button {
+    @include font;
+  }
 }
 .category-container,
 .brand-container {
