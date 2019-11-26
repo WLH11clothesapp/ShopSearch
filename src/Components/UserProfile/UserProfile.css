@@ -13,11 +13,12 @@
 
 .placeholder {
   height: 10vh;
-  background-color: #daf2e7;
+  background-color: #e3f2ff;
 }
 
 .logout-button {
-  background-color: #daf2e7;
+  background-color: #e3f2ff;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .add-post-container {
@@ -49,8 +50,10 @@
 }
 
 .user-post {
-  background-color: #daf2e7;
+  background-size: cover;
+  background-position: center;
   height: 160px;
   width: 140px;
   margin: 10px;
 }
+/*# sourceMappingURL=UserProfile.css.map */

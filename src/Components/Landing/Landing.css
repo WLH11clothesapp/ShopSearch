@@ -15,7 +15,7 @@
 
 .placeholder {
   height: 10vh;
-  background-color: #daf2e7;
+  background-color: #e3f2ff;
 }
 
 .landing-content-about {
@@ -62,7 +62,7 @@
   border: lightgrey 0.1px solid;
   height: 42%;
   width: 40%;
-  background-color: #daf2e7;
+  background-color: #e3f2ff;
   margin: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -98,3 +98,4 @@
   background-image: url("./LandingBottomSection-3.png");
   background-size: cover;
 }
+/*# sourceMappingURL=Landing.css.map */
