@@ -7,8 +7,6 @@ import { updateUser } from '../../redux/userReducer';
 import { connect } from 'react-redux';
 
 function Login(props) {
-  const loginButton = useRef(null);
-
   function handleClick() {
     // console.log('props', props)
     axios
@@ -17,7 +15,7 @@ function Login(props) {
         password: state.password
       })
       .then(res => {
-        // props.updateUser();
+        props.updateUser(res.data);
         props.history.push('/userprofile');
       })
       .catch(err => console.log(err));
@@ -65,7 +63,6 @@ function Login(props) {
         <button
           id='login-button'
           className='complete-login'
-          ref={loginButton}
           onClick={handleSubmit}
         >
           {' '}

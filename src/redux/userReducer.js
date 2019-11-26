@@ -9,17 +9,10 @@ const initialState = {
 
 const UPDATE_USER = 'UPDATE_USER';
 
-export function updateUser() {
-  const user = axios
-    .get('/api/user')
-    .then(res => {
-      // console.log(res.data);
-      return res.data;
-    })
-    .catch(err => console.log(err));
+export function updateUser(userObj) {
   return {
     type: UPDATE_USER,
-    payload: user
+    payload: userObj
   };
 }
 
@@ -27,7 +20,7 @@ export default function reducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case UPDATE_USER + '_FULFILLED':
+    case UPDATE_USER:
       console.log(payload);
       return {
         ...state,

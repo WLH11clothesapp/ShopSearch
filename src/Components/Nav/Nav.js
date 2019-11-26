@@ -8,15 +8,14 @@ import { updateUser } from '../../redux/userReducer';
 // import "../../../public/LogoOption1.png"
 
 class Nav extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      user_id: 0
-    };
-  }
-
   componentDidMount() {
-    this.props.updateUser();
+    axios
+      .get('/api/user')
+      .then(res => {
+        console.log(res.data);
+        updateUser(res.data);
+      })
+      .catch(err => console.log(err));
   }
 
   componentDidUpdate(prevProps) {
@@ -37,6 +36,7 @@ class Nav extends React.Component {
       .catch(err => console.log(err));
   };
   render() {
+    console.log(this.props);
     return (
       <nav className='nav'>
         {/* we need a ternary here: if there is NO user on session this nav will display, but if there IS a user on session, change register and login to profile and logout */}
