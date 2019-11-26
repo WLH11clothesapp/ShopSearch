@@ -21,17 +21,19 @@ module.exports = {
   },
 
   addProduct: async (req, res) => {
-    console.log('hit addProduct')
-    res.status(200).send('from addProduct in controller')
-  //   const {title, brand, category, url, post_id} = res.data
-  //   console.log('res.data', res.data)
-  //   const db = req.app.get('db');
-  //   let product_id = await db.check_product_url(url)
-  //   if(!product_id[0]){
-  //     product_id = await db.addProduct({title, brand, category, url, post_id}) 
-  //   }
-  //   product_id = product_id[0]
-  //   await db.add_product_link(posts_id, product_id);
-  //   res.sendStatus(200)
+    const {title, brand, category, url, post_id, img_url} = req.body
+    console.log('post_id', post_id)
+    const db = req.app.get('db');
+
+    let product_id = await db.check_product_url(url)
+    if(!product_id[0]){
+      console.log('hit no product')
+      product_id = await db.add_product({title, brand, category, url, img_url})
+    } else {console.log('no violence')}
+
+    product_id = product_id[0].product_id
+    console.log(post_id)
+    await db.add_posts_product(post_id, product_id);
+    res.sendStatus(200)
   }
 };

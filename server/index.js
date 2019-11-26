@@ -42,7 +42,7 @@ app.get('/api/user', authCtrl.getUser);
 app.get('/api/products', prodCtrl.getProducts);
 // app.get("/api/search/", prodCtrl.searchProducts); // use queary
 app.get('/api/product/:id', prodCtrl.getProduct);
-// app.post("/api/product", prodCtrl.addProduct);
+app.post("/api/product", prodCtrl.addProduct);
 // app.post("/api/brands", prodCtrl.getBrands);
 app.get('/api/post-products/:post_id', prodCtrl.getPostProducts);
 

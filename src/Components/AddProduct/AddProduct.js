@@ -1,23 +1,23 @@
 import React from 'react'
 
 function AddProduct(props) {
-
     const [state, setState] = React.useState({
         title:'',
         category: '',
         brand: '',
+        image: '',
         url: ''
     })
+    
 
-
-    const handleChange = event => {
+    const  handleChange =  async e => {
         /// handle changes for typing in input boxes where hook is called
-        setState({
+        await setState({
           ...state,
-          [event.target.name]: event.target.value
+          [e.target.name]: e.target.value
         });
         props.grabInfo(props.index, state)
-      };
+    };
 
     return (
         <div className="add-product-container">
@@ -49,6 +49,10 @@ function AddProduct(props) {
                         </select>
                     </section>
                     </div>
+                    <section>
+                        <h6 className="add-product-h6">PRODUCT IMAGE URL:</h6>
+                        <input name='image' value={state.image} onChange={handleChange} placeholder="Product Image URL"/>
+                    </section>
                     <section>
                         <h6 className="add-product-h6">PRODUCT URL:</h6>
                         <input name='url' value={state.url} onChange={handleChange} placeholder="Product URL"/>

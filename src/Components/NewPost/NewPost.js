@@ -1,5 +1,6 @@
 //NewPost
 import React from 'react'
+import {connect} from 'react-redux'
 import axios from 'axios'
 import './NewPost.css'
 
@@ -8,7 +9,6 @@ import AddProduct from '../AddProduct/AddProduct'
 function NewPost(props){
 
     const [url, setUrl] = React.useState('');
-    const [newProducts, setNewProducts] = React.useState([])
     const [productCount, setProductCount] = React.useState(1) /// used to determine the count of addProduct
     const info = [];
 
@@ -19,14 +19,6 @@ function NewPost(props){
         setUrl( event.target.value );
     };
 
-    const addProductObjToArr = (newProductObj, i) => {
-        /// handle changes for typing in input boxes where hook is called
-        setNewProducts([
-          ...newProducts,
-          newProductObj
-        ]);
-    };
-
     const grabInfo= (index, stateObj) => {
         console.log('index', index)
         console.log('stateObj', stateObj)
@@ -34,12 +26,32 @@ function NewPost(props){
         console.log(info)
     }
 
-    function makePost() {
-        let data
-        axios.post("/api/post", )//{ user_id:props.user.userId , image:url, text: ''}
-        .then(res => {data = res.data})
+    async function  makePost() {
+        let post_id = await axios.post("/api/post", { 
+            user_id:   1 , 
+            image:url, 
+            text: 'word'}) 
+        .then(res => {
+            console.log(res.data)
+           return res.data})
         .catch(err=>console.log(err))
-        console.log('data', data)
+        console.log('post_id', post_id)
+        
+        for(let j = 0; j < productCount; j++){
+            const i = info[j]
+            console.log('post_id', post_id)
+            await axios.post('/api/product', {
+                title:i.title, 
+                brand:i.brand, 
+                category:i.category, 
+                url:i.url, 
+                img_url:i.image, 
+                post_id:post_id.post_id})
+            .then(res => {
+                console.log('res.data',res.data, j)
+               return res.data})
+            .catch(err=>console.log(err))
+        }
     }
 
     const decCount = () => {setProductCount(productCount - 1); console.log('dec')}
@@ -74,4 +86,10 @@ function NewPost(props){
     )
 }
 
-export default NewPost
+function mapStateToProps(reactState) {
+    const {  } = reactState
+    return {  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewPost) 
+

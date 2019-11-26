@@ -16,13 +16,13 @@ module.exports = {
     }, 
 
     addPost: async (req, res) => {
+        // console.log('hit addPost')
+        // res.status(200).send('from Post in controller')
         const { user_id, image, text } = req.body
         console.log(user_id, image, text)
         const db = req.app.get('db');
-        let post_id = await db.add_post({post_id, user_id, image, text})
-        console.log(post_id)
+        let post_id = await db.add_post({user_id, image, text})
+        console.log('pi', post_id[0])
         res.status(200).send(post_id[0])
     },
-    
-    
 }
