@@ -17,6 +17,12 @@ function AddProduct(props) {
         url: ''
     }
     
+    const brands = props.brands.map((e, i) => {
+        return <option key={`brand ${i}`}>{e}</option>
+    })
+    const categories = props.categories.map((e, i) => {
+        return <option key={`cat ${i}`}>{e}</option>
+    })
 
     const handleChange = e => {
         /// handle changes for typing in input boxes where hook is called
@@ -39,22 +45,14 @@ function AddProduct(props) {
                         <h6 className="add-product-h6">CATEGORY</h6>
                         <select name='category' value={state.category} onChange={handleChange} className="select-category">
                         <option hidden > SELECT CATEGORY ↓</option>
-                            <option>Shirts</option>
-                            <option>Outerwear</option>
-                            <option>Pants</option>
-                            <option>Shoes</option>
-                            <option>Accessories</option>
+                            {categories}
                         </select>
                     </section>
                     <section>
                     <h6 className="add-product-h6">BRAND</h6>
                         <select name='brand' value={state.brand} onChange={handleChange} className="select-brand">
                         <option  hidden> SELECT BRAND ↓</option>
-                            <option>Nordstrom</option>
-                            <option>Kuhl</option>
-                            <option>Abercrombie & Fitch</option>
-                            <option>Urban Outfitters</option>
-                            <option>Target</option>
+                            {brands}
                         </select>
                     </section>
                     </div>

@@ -9,9 +9,17 @@ import AddProduct from '../AddProduct/AddProduct';
 function NewPost(props) {
   const [url, setUrl] = React.useState('');
   const [productCount, setProductCount] = React.useState(1); /// used to determine the count of addProduct
+  const [brands, setBrands] = React.useState([])
+  const [categories, setCategories] = React.useState([])
   const info = [];
 
-  ///add a useEffect to get brand and category from database
+  React.useEffect(() =>  {
+    axios.get('/api/brandsandcatagories')
+    .then(res => {
+      setBrands(res.data.brands)
+      setCategories(res.data.categories)
+    })
+  }, [])
 
   const handleUrlChange = event => {
     /// handle changes for typing in input boxes where hook is called
@@ -19,10 +27,7 @@ function NewPost(props) {
   };
 
   const grabInfo = (index, stateObj) => {
-    console.log('index', index);
-    console.log('stateObj', stateObj);
     info[index] = stateObj;
-    console.log(info);
   };
 
   async function makePost() {
@@ -33,7 +38,6 @@ function NewPost(props) {
         text: 'word'
       })
       .then(res => {
-        console.log(res.data);
         return res.data;
       })
       .catch(err => console.log(err));
@@ -71,7 +75,13 @@ function NewPost(props) {
   const newProductsList = [];
   for (let i = 0; i < productCount; i++) {
     newProductsList.push(
-      <AddProduct index={i} key={`newProd ${i}`} grabInfo={grabInfo} />
+      <AddProduct 
+        index={i} 
+        key={`newProd ${i}`} 
+        grabInfo={grabInfo} 
+        brands={brands}
+        categories={categories}
+      />
     );
   }
 
@@ -79,7 +89,9 @@ function NewPost(props) {
     <div className='new-post-page'>
       <h5 className='new-post-h5'> Create New Post:</h5>
       <section className='new-post-container'>
-        <div className='img-preview'>Img preview</div>
+        <div className='img-preview'
+          style={{backgroundImage: `url(${url})`}}
+        >{!url && 'Img preview'}</div>
         <h5> Add image URL:</h5>
         <input
           value={url}
