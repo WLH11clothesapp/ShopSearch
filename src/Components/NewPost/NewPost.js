@@ -8,30 +8,29 @@ import './NewPost.css';
 import AddProduct from '../AddProduct/AddProduct';
 
 function NewPost(props) {
-  const [url, setUrl] = React.useState('');
-  const [text, setText] = React.useState('') 
+  const [postImage, setPostImage] = React.useState('');
+  const [text, setText] = React.useState('');
   const [actualUrl, setactualUrl] = React.useState('');
   const [productCount, setProductCount] = React.useState(1); /// used to determine the count of addProduct
-  const [brands, setBrands] = React.useState([])
-  const [categories, setCategories] = React.useState([])
+  const [brands, setBrands] = React.useState([]);
+  const [categories, setCategories] = React.useState([]);
   const info = [];
 
-  React.useEffect(() =>  {
-    axios.get('/api/brandsandcatagories')
-    .then(res => {
-      setBrands(res.data.brands)
-      setCategories(res.data.categories)
-    })
-  }, [])
+  React.useEffect(() => {
+    axios.get('/api/brandsandcatagories').then(res => {
+      setBrands(res.data.brands);
+      setCategories(res.data.categories);
+    });
+  }, []);
   useEffect(() => {
-    if (url !== '') {
+    if (postImage !== '') {
       getSignedRequest();
     }
-  }, [url]);
+  }, [postImage]);
   ///add a useEffect to get brand and category from database
 
   const getSignedRequest = () => {
-    fetch(url)
+    fetch(postImage)
       .then(res => res.blob())
       .then(blob => {
         console.log(blob);
@@ -75,11 +74,11 @@ function NewPost(props) {
 
   const handleUrlChange = event => {
     /// handle changes for typing in input boxes where hook is called
-    setUrl(event.target.value);
+    setPostImage(event.target.value);
   };
   const handleTextChange = event => {
     /// handle changes for typing in input boxes where hook is called
-    setText(event.target.value)
+    setText(event.target.value);
   };
   const grabInfo = (index, stateObj) => {
     info[index] = stateObj;
@@ -90,7 +89,7 @@ function NewPost(props) {
       .post('/api/post', {
         user_id: props.user_id, /// built this way so we don't have to login every time to work on this page
         image: actualUrl,
-        text: text 
+        text: text
       })
       .then(res => {
         return res.data;
@@ -113,7 +112,7 @@ function NewPost(props) {
         })
         .then(res => {
           console.log('res.data', res.data, j);
-          props.history.push('/userprofile')
+          props.history.push('/userprofile');
           return res.data;
         })
         .catch(err => console.log(err));
@@ -131,10 +130,10 @@ function NewPost(props) {
   const newProductsList = [];
   for (let i = 0; i < productCount; i++) {
     newProductsList.push(
-      <AddProduct 
-        index={i} 
-        key={`newProd ${i}`} 
-        grabInfo={grabInfo} 
+      <AddProduct
+        index={i}
+        key={`newProd ${i}`}
+        grabInfo={grabInfo}
         brands={brands}
         categories={categories}
       />
@@ -145,22 +144,25 @@ function NewPost(props) {
     <div className='new-post-page'>
       <h5 className='new-post-h5'> Create New Post:</h5>
       <section className='new-post-container'>
-        <div className='img-preview'
-          style={{backgroundImage: `url(${url})`}}
-        >{!url && 'Img preview'}</div>
+        <div
+          className='img-preview'
+          style={{ backgroundImage: `url(${postImage})` }}
+        >
+          {!postImage && 'Img preview'}
+        </div>
         <h5> Add image URL:</h5>
         <input
-          value={url}
+          value={postImage}
           onChange={handleUrlChange}
           placeholder='Copy and paste your img URL here'
         />
         <h5> Add Description:</h5>
         <textarea
-            cols="50" 
-            rows="4"
-            value={text}
-            onChange={handleTextChange}
-            placeholder='Add Description of your New Post'
+          cols='50'
+          rows='4'
+          value={text}
+          onChange={handleTextChange}
+          placeholder='Add Description of your New Post'
         ></textarea>
         <h5> Add Products:</h5>
         {newProductsList} {/* displays addProduct * product count */}
