@@ -11,6 +11,11 @@
           align-items: center;
 }
 
+.new-post-page textarea {
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: #e3f2ff;
+}
+
 .new-post-h5 {
   margin: 5px;
 }
