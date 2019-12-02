@@ -7,34 +7,50 @@
 }
 
 .search-container {
+  background-color: $secondary-color;
   border: $border;
   margin: 10px 0;
   width: 90vw;
   button {
     @include font;
   }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.search-title{
+  font-size: 20px;
+}
+#clear-button{
+  margin-top: 10px;
+  background-color: white;
+}
+.label-container{
+  // background-color: yellow;
+  width: 70%;
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 18px;
 }
 .category-container,
 .brand-container {
+  width: 70%;
   // border: red 1px solid;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 40px;
   padding-bottom: 10px;
 }
 .checkBox {
   width: 20px;
 }
-// for .search-results-container we might want to adjust the height depending on how many search results we want to show on one page
-
 .search-results-container {
   width: 90vw;
   border: $border;
   padding-bottom: 10px;
+  background-color: $secondary-color;
 }
 .search-results {
-  // border: red .1px solid;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
