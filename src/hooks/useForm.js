@@ -1,5 +1,13 @@
 import { useState } from 'react';
 
+function isEmpty(obj) {
+  for(var key in obj) {
+      if(obj.hasOwnProperty(key))
+          return false;
+  }
+  return true;
+}
+
 export const useForm = (callback, login) => {
   ///callback is function to call if tests are passed. login is true if its the login component
   const [state, setState] = useState({
@@ -20,48 +28,59 @@ export const useForm = (callback, login) => {
   };
 
   function validate(values) {
+    console.log('login', login)
     /// state will be put in for values
-    const errors = {};
-    if (!values.name || login) {
+    if ( !login && !values.name ) {
       ///test for name is there and if its longer than 3
-      errors.name = 'Must enter a name'; /// || login is to make sure it doesn't go off in the login form
-    } else if (values.name.length < 3 || login) {
-      errors.name = 'Username needs to be more than 3 characters';
+      setErrors({...errors, name: 'Must enter a name'}); /// || login is to make sure it doesn't go off in the login form
+    } else if (!login && values.name.length < 3 ) {
+      setErrors({...errors, name:'Username needs to be more than 3 characters'}); /// || login is to make sure it doesn't go off in the login form
     }
 
-    if (!values.email) {
+    if ( !values.email ) {
       /// checks for email and if it's in the right format
-      errors.email = 'Must enter an email';
+      setErrors({...errors, email:'Must enter an email'}); /// || login is to make sure it doesn't go off in the login form
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-      errors.email = 'Invalid Email address';
+      setErrors({...errors, name:'Invalid Email address'}); /// || login is to make sure it doesn't go off in the login form
     }
 
-    if (!values.password) {
+    if ( !values.password ) {
       /// checks for password and if its longer than 2
-      errors.password = 'Password is required';
+      setErrors({...errors, name:'Password is required'}); /// || login is to make sure it doesn't go off in the login form
+      ;
     } else if (values.password.length < 3) {
-      errors.password = 'Password needs to be more than 2 characters';
+      setErrors({...errors, name:'Password needs to be more than 2 characters'}); /// || login is to make sure it doesn't go off in the login form
+      ;
     }
 
-    if (!values.igHandle || login) {
+    if ( !login && !values.igHandle  ) {
       // checks for igHandle and if it starts with @
-      errors.igHandle = 'Must enter an Instagram handle';
-    } else if (!/@\S+/.test(values.igHandle) || login) {
-      console.log('hit');
-      errors.igHandle = 'follow format @yourHandle';
+      setErrors({...errors, name:'Must enter an Instagram handle'}); /// || login is to make sure it doesn't go off in the login form
+    } else if (!/@\S+/.test(values.igHandle) && !login) {
+      setErrors({...errors, name:'follow format @yourHandle'}); /// || login is to make sure it doesn't go off in the login form
     }
+    console.log('errors 1', errors)
     return errors;
   }
 
-  const handleSubmit = () => {
+   const handleSubmit = () => {
     /// to run when submit button on form checks test are passed then updates errors or runs callback
-    setErrors(validate(state));
-    console.log('errors', errors);
-    if (Object.keys(errors).length === 0) {
-      console.log('hit callback');
-      callback();
+    console.log('isEmpty', isEmpty(errors))
+    if (isEmpty(errors)) {
+      console.log('passed is empty')
+      let data;
+      callback().then(res => {
+        if (res === 'Incorrect Password'){
+          errors.password = res
+        } else if (res.includes('Email') ){
+          errors.email = res
+        }
+      }
+      ).catch(err => console.log(err))
+       console.log('data', data)
     }
-  };
+  }; 
+
 
   return {
     //stuff to pass back to forms

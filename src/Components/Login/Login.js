@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useForm } from '../../hooks/useForm';
 import { Link } from 'react-router-dom';
@@ -6,12 +6,14 @@ import './Login.css';
 import { updateUser } from '../../redux/userReducer';
 import { connect } from 'react-redux';
 
-function Login(props) {
-  // const loginButton = useRef(null);
 
-  function handleClick() {
+function Login(props) {
+  // const [errors, setErrors] = useState({})
+  
+
+  async function handleClick() {
     console.log('login handle click hit');
-    axios
+    let pass = await axios
       .post('/api/login', {
         email: state.email,
         password: state.password
@@ -19,19 +21,24 @@ function Login(props) {
       .then(res => {
         props.updateUser(res.data);
         props.history.push('/userprofile');
+        return 'test string';
       })
-      .catch(err => console.log(err));
-  }
+      .catch(err => {console.log(typeof err);
+         return err.response.data})
+      return await pass
+  } 
 
-  let { state, handleChange, handleSubmit, errors } = useForm(
-    handleClick,
-    true
-  );
+  let { state, handleChange, handleSubmit, errors} = useForm( handleClick, true );
+
+  React.useEffect(() => {
+    console.log('state', state)
+    console.log('errors',errors)
+  }, [state,errors])
 
   return (
     <div className='login-page'>
       <p className='login-info'>
-        Are you new to ti.wonkotekil? Click here to Register new account
+        Are you new to Love to Know? Click here to Register new account
         <Link to='/register'>
           <button>here</button>
         </Link>
@@ -61,7 +68,7 @@ function Login(props) {
           className={`${errors.password && 'inputError'}`}
         />
         <br />
-        {errors.email && <p className='error'>{errors.password}</p>}
+        {errors.pa && <p className='error'>{errors.password}</p>}
         <button
           id='login-button'
           className='complete-login'
