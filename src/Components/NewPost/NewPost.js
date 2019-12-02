@@ -8,20 +8,20 @@ import './NewPost.css';
 import AddProduct from '../AddProduct/AddProduct';
 
 function NewPost(props) {
-  const [url, setUrl] = React.useState('');
+  const [postImage, setPostImage] = React.useState('');
   const [actualUrl, setactualUrl] = React.useState('');
   const [productCount, setProductCount] = React.useState(1); /// used to determine the count of addProduct
   const info = [];
 
   useEffect(() => {
-    if (url !== '') {
+    if (postImage !== '') {
       getSignedRequest();
     }
-  }, [url]);
+  }, [postImage]);
   ///add a useEffect to get brand and category from database
 
   const getSignedRequest = () => {
-    fetch(url)
+    fetch(postImage)
       .then(res => res.blob())
       .then(blob => {
         console.log(blob);
@@ -65,7 +65,7 @@ function NewPost(props) {
 
   const handleUrlChange = event => {
     /// handle changes for typing in input boxes where hook is called
-    setUrl(event.target.value);
+    setPostImage(event.target.value);
   };
 
   const grabInfo = (index, stateObj) => {
@@ -132,7 +132,7 @@ function NewPost(props) {
         <div className='img-preview'>Img preview</div>
         <h5> Add image URL:</h5>
         <input
-          value={url}
+          value={postImage}
           onChange={handleUrlChange}
           placeholder='Copy and paste your img URL here'
         />
