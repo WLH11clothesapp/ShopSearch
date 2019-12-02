@@ -16,7 +16,7 @@ module.exports = {
     const { email, password, name, igHandle } = req.body;
     let foundUser = await db.check_email(email);
     if (foundUser[0]) {
-      res.status(409).send('email already exists'); //todo make a cool alert.
+      res.status(409).send('Email already exists'); //todo make a cool alert.
     }
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
@@ -39,14 +39,15 @@ module.exports = {
     let foundUser = await db.check_email(email);
     if (!foundUser[0]) {
       res.status(401).send('Email is not Registered');
-    }
-    const authenticated = bcrypt.compareSync(password, foundUser[0].password);
-    if (authenticated) {
-      delete foundUser[0].password;
-      req.session.user = foundUser[0];
-      res.status(202).send(req.session.user);
-    } else {
-      res.status(401).send('Incorrect Password');
+    } else{
+      const authenticated = bcrypt.compareSync(password, foundUser[0].password);
+      if (authenticated) {
+        delete foundUser[0].password;
+        req.session.user = foundUser[0];
+        res.status(202).send(req.session.user);
+      } else {
+        res.status(401).send('Incorrect Password');
+      }
     }
   }
 };

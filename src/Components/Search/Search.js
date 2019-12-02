@@ -34,8 +34,8 @@ export default function Search() {
   return (
     <div className='search-page'>
       <section className='search-container'>
-        <p className="search-title">Search All Products</p>
-        <section className="label-container">
+        <p className='search-title'>Search All Products</p>
+        <section className='label-container'>
           <label>URL:</label>
         </section>
         <input
@@ -49,62 +49,12 @@ export default function Search() {
           onClick={() => {
             setInput('');
           }}
-          id="clear-button"
+          id='clear-button'
         >
           Clear
         </button>
-        <section className="label-container">
-          <label>Category:</label>
-        </section>
-        <div className='category-container'>
-          {/* I added divs here just to package the input and input label together for styling purposes */}
-          <div>
-            <input
-              name='Shirts'
-              className='checkBox'
-              type='checkbox'
-              onChange={e => handleCategoriesCheckbox(e.target.name)}
-            />
-            Shirts
-          </div>
-          <div>
-            <input
-              name='Outerwear'
-              className='checkBox'
-              type='checkbox'
-              onChange={e => handleCategoriesCheckbox(e.target.name)}
-            />
-            Outerwear
-          </div>
-          <div>
-            <input
-              name='Pants'
-              className='checkBox'
-              type='checkbox'
-              onChange={e => handleCategoriesCheckbox(e.target.name)}
-            />
-            Pants
-          </div>
-          <div>
-            <input
-              name='Shoes'
-              className='checkBox'
-              type='checkbox'
-              onChange={e => handleCategoriesCheckbox(e.target.name)}
-            />
-            Shoes
-          </div>
-          <div>
-            <input
-              name='Accessories'
-              className='checkBox'
-              type='checkbox'
-              onChange={e => handleCategoriesCheckbox(e.target.name)}
-            />
-            Accessories
-          </div>
-        </div>
-        <section className="label-container">
+
+        <section className='label-container'>
           <label>Brand:</label>
         </section>
         <div className='brand-container'>
@@ -156,7 +106,7 @@ export default function Search() {
         </div>
       </section>
       <section className='search-results-container'>
-      <p className="search-title">Search Results</p>
+        <p className='search-title'>Search Results</p>
         {/* This is where we will render the SearchResults component and map over the results, the following divs just show an idea of how it will look */}
         <div className='search-results'>
           <SearchResults

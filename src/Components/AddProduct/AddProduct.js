@@ -28,6 +28,13 @@ function AddProduct(props) {
     actualImage: ''
   };
 
+  const brands = props.brands.map((e, i) => {
+    return <option key={`brand ${i}`}>{e}</option>
+})
+const categories = props.categories.map((e, i) => {
+    return <option key={`cat ${i}`}>{e}</option>
+})
+
   const getSignedRequest = () => {
     fetch(state.image)
       .then(res => res.blob())
@@ -102,11 +109,7 @@ function AddProduct(props) {
             className='select-category'
           >
             <option hidden> SELECT CATEGORY ↓</option>
-            <option>Shirts</option>
-            <option>Outerwear</option>
-            <option>Pants</option>
-            <option>Shoes</option>
-            <option>Accessories</option>
+            {categories}
           </select>
         </section>
         <section>
@@ -118,11 +121,7 @@ function AddProduct(props) {
             className='select-brand'
           >
             <option hidden> SELECT BRAND ↓</option>
-            <option>Nordstrom</option>
-            <option>Kuhl</option>
-            <option>Abercrombie & Fitch</option>
-            <option>Urban Outfitters</option>
-            <option>Target</option>
+            {brands}
           </select>
         </section>
       </div>

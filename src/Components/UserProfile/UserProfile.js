@@ -28,7 +28,9 @@ function UserProfile(props) {
       })
       .catch(err => console.log(err));
   };
-
+  const newPostPush = () => {
+      props.history.push('/newpost')
+  }
   console.log(props);
   return (
     <div className='user-profile-page'>
@@ -37,7 +39,7 @@ function UserProfile(props) {
         Log Out
       </button>
       <h5>Create New Post:</h5>
-      <section className='add-post-container'>+</section>
+      <section className='add-post-container' onClick={() => newPostPush()} >+</section>
       <h5>Your Recent Posts:</h5>
       {/* if we like this idea of showing the user's posts on their profile page, we will need an additional component that we map over in this section */}
       <section className='user-posts'>
