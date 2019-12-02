@@ -37,50 +37,52 @@ function Login(props) {
 
   return (
     <div className='login-page'>
-      <p className='login-info'>
-        {'Are you new to Love to Know it? Click here to Register new account '}
-        <Link to='/register'>here</Link>
-      </p>
-
+      
+      <section className="login-logo"></section>
       <section className='login-form'>
-        <h6>Welcome back, user! Please enter your account information</h6>
-        <h5>Email:</h5>
+        
+       <section className="label-container">
+          <label>Email <span className="star">*</span></label>
+        </section>
         <input
           name='email'
           value={state.email}
           onChange={handleChange}
-          placeholder='Enter your email'
+          // placeholder='Enter your email'
           className={`${errors.email && 'inputError'}`}
-        />{' '}
+        />
         {/*used to make boarder red when test failed*/}
         {errors.email && <p className='error'>{errors.email}</p>}{' '}
         {/* display message when test fail */}
         {/* styles for errors are in regester.scss*/}
-        <h5>Password:</h5>
+        <section className="label-container">
+          <label>Password <span className="star">*</span></label>
+        </section>
         <input
+          className="input-style"
           name='password'
           type='password'
           value={state.password}
           onChange={handleChange}
-          placeholder='Enter your password'
+          // placeholder='Enter your password'
           className={`${errors.password && 'inputError'}`}
         />
-        <br />
-        {errors.pa && <p className='error'>{errors.password}</p>}
+        {errors.email && <p className='error'>{errors.password}</p>}
+        <div className="button-border-login">
         <button
           id='login-button'
-          className='complete-login'
-          // ref={loginButton}
+          className="complete-login"
           onClick={handleSubmit}
-        >
-          {' '}
-          Log In
-        </button>
+        >Log In</button>
+        <div className="login-info-container">
+          <p><span className="star">*</span> Required field</p>
+          <p>New to Love to Know? <Link to="./register"><span id="signup-span">Sign up for free</span></Link></p>
+        </div>
+        </div>
+         
+        
       </section>
-      <footer className='login-footer'>
-        If we have enough time, lets add some fun graphic here to fill space.
-        Maybe a "did you know?" fact about our brand or an image{' '}
-      </footer>
+     
     </div>
   );
 }

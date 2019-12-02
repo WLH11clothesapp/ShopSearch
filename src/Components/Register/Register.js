@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { connect } from 'react-redux';
 import { updateUser } from '../../redux/userReducer';
+import { Link } from 'react-router-dom';
 
 function Register(props) {
   //first is the value the state is holding
@@ -38,15 +39,14 @@ function Register(props) {
 
   return (
     <div className='register-page'>
-      <p className='register-info'>
-        {' '}
-        This is some information about why you should register for an account
-      </p>
+      <div className='register-info'></div>
       <section className='register-form'>
-        <h6>Please complete this form</h6>
-        <h5>Name:</h5>
+        <p id="register-p">Create New Account</p>
+        <section className="label-container">
+          <label>Name <span className="star">*</span></label>
+        </section>
         <input
-          placeholder='Enter your first and last name'
+          // placeholder='Enter your first and last name'
           name='name'
           type='text'
           value={state.name}
@@ -55,9 +55,11 @@ function Register(props) {
         />
         {errors.name && <p className='error'>{errors.name}</p>}{' '}
         {/* will display error messes for failed test */}
-        <h5> Email:</h5>
+        <section className="label-container">
+          <label>Email <span className="star">*</span></label>
+        </section>
         <input
-          placeholder='Enter your email'
+          // placeholder='Enter your email'
           name='email'
           type='text'
           value={state.email}
@@ -65,9 +67,11 @@ function Register(props) {
           className={`${errors.email && 'inputError'}`}
         />
         {errors.email && <p className='error'>{errors.email}</p>}
-        <h5>Instagram Handle:</h5>
+        <section className="label-container">
+          <label>Instagram Handle</label>
+        </section>
         <input
-          placeholder='Example: @yourstruly'
+          // placeholder='Example: @yourstruly'
           name='igHandle'
           type='text'
           value={state.igHandle}
@@ -75,9 +79,11 @@ function Register(props) {
           className={`${errors.igHandle && 'inputError'}`}
         />
         {errors.igHandle && <p className='error'>{errors.igHandle}</p>}
-        <h5>Password:</h5>
+        <section className="label-container">
+          <label>Password <span className="star">*</span></label>
+        </section>
         <input
-          placeholder='Create your password'
+          // placeholder='Create your password'
           name='password'
           type='password'
           value={state.password}
@@ -92,6 +98,10 @@ function Register(props) {
           {' '}
           Register New Account
         </button>
+        <div className="login-info-container">
+          <p><span className="star">*</span> Required field</p>
+          <p>Already have an account? <Link to="./login"><span id="signup-span">Login here</span></Link></p>
+        </div>
       </section>
     </div>
   );
