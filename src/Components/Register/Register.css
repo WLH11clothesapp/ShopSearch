@@ -27,7 +27,7 @@
 input {
   font-family: 'Open Sans Condensed', sans-serif;
   width: 70%;
-  background-color: #e3f2ff;
+  border: lightgrey 0.1px solid;
 }
 
 .complete-registration {

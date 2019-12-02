@@ -19,7 +19,8 @@
 input {
   @include font;
   width: 70%;
-  background-color: $accent-color;
+  // background-color: $accent-color;
+  border: $border;
 }
 
 .complete-registration {
