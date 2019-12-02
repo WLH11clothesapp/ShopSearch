@@ -35,5 +35,17 @@ module.exports = {
     console.log(post_id)
     await db.add_posts_product(post_id, product_id);
     res.sendStatus(200)
+  }, 
+
+  getBrandsAndCatagories: async (req, res) => {
+    console.log('object')
+    const db = req.app.get('db')
+    let brands = await db.get_brands()
+    brands = brands.map(e => e.brand)
+    let categories = await db.get_categories()
+    categories = categories.map(e => e.category)
+    console.log('brands', brands)
+    console.log('categories', categories)
+    res.status(200).send({brands, categories})
   }
 };
