@@ -34,11 +34,13 @@ export default function Search() {
   return (
     <div className='search-page'>
       <section className='search-container'>
-        <h5>Search Products</h5>
-        <h5>By URL:</h5>
+        <p className="search-title">Search All Products</p>
+        <section className="label-container">
+          <label>URL:</label>
+        </section>
         <input
           value={urlInput}
-          placeholder='Enter the URL of your product'
+          // placeholder='Enter the URL of your product'
           onChange={e => {
             handleUrlInput(e.target.value);
           }}
@@ -47,10 +49,13 @@ export default function Search() {
           onClick={() => {
             setInput('');
           }}
+          id="clear-button"
         >
           Clear
         </button>
-        <h5>By Category:</h5>
+        <section className="label-container">
+          <label>Category:</label>
+        </section>
         <div className='category-container'>
           {/* I added divs here just to package the input and input label together for styling purposes */}
           <div>
@@ -99,7 +104,9 @@ export default function Search() {
             Accessories
           </div>
         </div>
-        <h5>By Brand:</h5>
+        <section className="label-container">
+          <label>Brand:</label>
+        </section>
         <div className='brand-container'>
           <div>
             <input
@@ -149,7 +156,7 @@ export default function Search() {
         </div>
       </section>
       <section className='search-results-container'>
-        <h5>Search Results</h5>
+      <p className="search-title">Search Results</p>
         {/* This is where we will render the SearchResults component and map over the results, the following divs just show an idea of how it will look */}
         <div className='search-results'>
           <SearchResults

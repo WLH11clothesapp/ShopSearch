@@ -1,6 +1,5 @@
 .register-page {
   background-color: white;
-  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13,27 +12,56 @@
           align-items: center;
 }
 
-.placeholder {
-  height: 10vh;
-  background-color: #e3f2ff;
+.register-info {
+  margin-top: 30px;
+  background-image: url("./LogoOption1.png");
+  background-size: cover;
+  background-position: center;
+  width: 170px;
+  height: 170px;
+}
+
+#register-p {
+  font-size: 20px;
 }
 
 .register-form {
-  height: 65vh;
+  background-color: #fafafa;
+  height: 50vh;
   width: 75vw;
   border: lightgrey 0.1px solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 10px;
+}
+
+.label-container {
+  width: 70%;
+  text-align: left;
+  padding-bottom: 2px;
 }
 
 input {
   font-family: 'Open Sans Condensed', sans-serif;
   width: 70%;
   background-color: #e3f2ff;
+  border: lightgrey 0.1px solid;
 }
 
 .complete-registration {
   font-family: 'Open Sans Condensed', sans-serif;
-  background-color: #e3f2ff;
-  margin-top: 60px;
+  background-color: white;
+  margin-top: 15px;
 }
 
 .error {
