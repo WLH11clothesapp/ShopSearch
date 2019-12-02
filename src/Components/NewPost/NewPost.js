@@ -1,5 +1,6 @@
 //NewPost
-import React from 'react';
+import React, { useEffect } from 'react';
+import { v4 as randomString } from 'uuid';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import './NewPost.css';
@@ -8,10 +9,59 @@ import AddProduct from '../AddProduct/AddProduct';
 
 function NewPost(props) {
   const [url, setUrl] = React.useState('');
+  const [actualUrl, setactualUrl] = React.useState('');
   const [productCount, setProductCount] = React.useState(1); /// used to determine the count of addProduct
   const info = [];
 
+  useEffect(() => {
+    if (url !== '') {
+      getSignedRequest();
+    }
+  }, [url]);
   ///add a useEffect to get brand and category from database
+
+  const getSignedRequest = () => {
+    fetch(url)
+      .then(res => res.blob())
+      .then(blob => {
+        console.log(blob);
+        blob.lastModifiedDate = new Date();
+        blob.name = randomString();
+        const fileName = `${blob.name}`;
+        axios
+          .get('/api/signs3', {
+            params: {
+              'file-name': fileName,
+              'file-type': blob.type
+            }
+          })
+          .then(res => {
+            const { signedRequest, url } = res.data;
+            uploadFile(blob, signedRequest, url);
+          })
+          .catch(err => console.log(err));
+      });
+  };
+
+  const uploadFile = (file, signedRequest, url) => {
+    let splitArray = url.split('.');
+    const fileType = splitArray[splitArray.length - 1];
+    const options = {
+      headers: {
+        'Content-Type': `img/${fileType}`
+      }
+    };
+    // console.log(signedRequest, file, options);
+
+    axios
+      .put(signedRequest, file, options)
+      .then(res => {
+        setactualUrl(url);
+      })
+      .catch(err => {
+        console.log(`ERROR: \n${err}`);
+      });
+  };
 
   const handleUrlChange = event => {
     /// handle changes for typing in input boxes where hook is called
@@ -29,7 +79,7 @@ function NewPost(props) {
     let post_id = await axios
       .post('/api/post', {
         user_id: props.user_id, /// built this way so we don't have to login every time to work on this page
-        image: url,
+        image: actualUrl,
         text: 'word'
       })
       .then(res => {
@@ -49,7 +99,7 @@ function NewPost(props) {
           brand: i.brand,
           category: i.category,
           url: i.url,
-          img_url: i.image,
+          img_url: i.actualImage,
           post_id: post_id.post_id
         })
         .then(res => {
