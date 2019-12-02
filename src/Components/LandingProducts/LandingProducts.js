@@ -89,7 +89,7 @@ const LandingProducts = () => {
           </Link>
         </>
       ) : (
-        <p>Loading{}</p>
+        <p>Loading...{}</p>
       )}
     </>
   );

@@ -16,8 +16,13 @@
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
+#login-title {
+  font-size: 20px;
+  margin-top: 5px;
+}
+
 .login-logo {
-  margin-top: 100px;
+  margin-top: 90px;
   background-image: url("./LogoOption1.png");
   background-size: cover;
   background-position: center;
@@ -37,7 +42,7 @@ a {
 
 .login-form {
   background-color: #fafafa;
-  height: 25vh;
+  height: 35vh;
   width: 75vw;
   border: lightgrey 0.1px solid;
   padding: 10px;
