@@ -18,6 +18,7 @@
 
 .logout-button {
   background-color: #e3f2ff;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .add-post-container {
@@ -55,3 +56,4 @@
   width: 140px;
   margin: 10px;
 }
+/*# sourceMappingURL=UserProfile.css.map */

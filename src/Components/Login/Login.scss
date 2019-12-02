@@ -1,35 +1,38 @@
-@import "../../../sass/vars";
+@import '../../../sass/vars';
 
-.login-page{
-    background-color: $background-color;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.login-page {
+  button {
+    @include font;
+  }
+  background-color: $background-color;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.placeholder{
-    height: 10vh;
-    background-color: $accent-color;
+.placeholder {
+  height: 10vh;
+  background-color: $accent-color;
 }
-.login-form{
-    height: 40vh;
-    width: 75vw;
-    border: $border;
+.login-form {
+  height: 40vh;
+  width: 75vw;
+  border: $border;
 }
-input{
-    width: 70%;
-    background-color: $accent-color;
+input {
+  width: 70%;
+  background-color: $accent-color;
 }
 
-.complete-login{
-    background-color: $accent-color;
-    margin-top: 35px;
+.complete-login {
+  background-color: $accent-color;
+  margin-top: 35px;
 }
-.login-footer{
-    border: $border;
-    margin: 50px;
-    height: 40vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.login-footer {
+  border: $border;
+  margin: 50px;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
