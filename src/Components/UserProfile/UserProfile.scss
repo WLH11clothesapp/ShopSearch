@@ -11,6 +11,7 @@
 }
 .logout-button {
   background-color: $accent-color;
+  @include font;
 }
 .add-post-container {
   width: 50vw;

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { useForm } from '../../hooks/useForm';
 import { Link } from 'react-router-dom';
@@ -31,15 +31,13 @@ function Login(props) {
   return (
     <div className='login-page'>
       <p className='login-info'>
-        Are you new to ti.wonkotekil? Click here to Register new account
-        <Link to='/register'>
-          <button>here</button>
-        </Link>
+        {'Are you new to Love to Know it? Click here to Register new account '}
+        <Link to='/register'>here</Link>
       </p>
 
       <section className='login-form'>
         <h6>Welcome back, user! Please enter your account information</h6>
-        <h5> Email:</h5>
+        <h5>Email:</h5>
         <input
           name='email'
           value={state.email}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 //this component makes an axios request to get all the products in the library, generates 5 random numbers and displays those items
 const LandingProducts = () => {
   const [products, setProducts] = useState([]);
-  const [indexes, setIndexes] = useState([]);
+  const [indexes] = useState([]);
 
   useEffect(() => {
     const getProducts = () => {

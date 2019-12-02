@@ -1,5 +1,5 @@
 //Search
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Search.css';
 import SearchResults from '../SearchResults/SearchResults';
 
@@ -15,8 +15,8 @@ export default function Search() {
   const [brands, setBrands] = useState({
     Target: false,
     Nordstrom: false,
-    Nike: false,
-    Freepeople: false,
+    Abercrombie: false,
+    UrbanOutfitters: false,
     Kuhl: false
   });
 
@@ -121,12 +121,12 @@ export default function Search() {
           </div>
           <div>
             <input
-              name={`Abercrombie & Fitch`}
+              name={`Abercrombie`}
               className='checkBox'
               type='checkbox'
               onChange={e => handleBrandsCheckbox(e.target.name)}
             />
-            Nike
+            Abercrombie & Fitch
           </div>
           <div>
             <input

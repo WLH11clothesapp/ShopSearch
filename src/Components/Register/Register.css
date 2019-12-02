@@ -25,11 +25,13 @@
 }
 
 input {
+  font-family: 'Open Sans Condensed', sans-serif;
   width: 70%;
   background-color: #e3f2ff;
 }
 
 .complete-registration {
+  font-family: 'Open Sans Condensed', sans-serif;
   background-color: #e3f2ff;
   margin-top: 60px;
 }
