@@ -2,31 +2,49 @@
 
 .register-page {
   background-color: $background-color;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.placeholder {
-  height: 10vh;
-  background-color: $accent-color;
+.register-info{
+  margin-top: 30px;
+  background-image: url("./LogoOption1.png");
+  background-size: cover;
+  background-position: center;
+  width: 170px;
+  height: 170px;
+}
+#register-p{
+  font-size: 20px;
 }
 .register-form {
-  height: 65vh;
+  background-color: $secondary-color;
+  height: 50vh;
   width: 75vw;
   border: $border;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.label-container{
+  // background-color: yellow;
+  width: 70%;
+  text-align: left;
+  padding-bottom: 2px;
 }
 input {
   @include font;
   width: 70%;
-  // background-color: $accent-color;
+  background-color: $accent-color;
   border: $border;
 }
 
 .complete-registration {
   @include font;
-  background-color: $accent-color;
-  margin-top: 60px;
+  background-color: white;
+  margin-top: 15px;
 }
 
 .error {

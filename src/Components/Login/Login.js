@@ -69,16 +69,13 @@ function Login(props) {
         >Log In</button>
         <div className="login-info-container">
           <p><span className="star">*</span> Required field</p>
-          <p>New to Love to Know? <span id="signup-span">Sign up for free</span></p>
+          <p>New to Love to Know? <Link to="./register"><span id="signup-span">Sign up for free</span></Link></p>
         </div>
         </div>
          
         
       </section>
-      {/* <footer className='login-footer'>
-        If we have enough time, lets add some fun graphic here to fill space.
-        Maybe a "did you know?" fact about our brand or an image{' '}
-      </footer> */}
+     
     </div>
   );
 }

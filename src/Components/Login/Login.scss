@@ -5,7 +5,6 @@
     @include font;
   }
   background-color: $background-color;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,14 +55,14 @@ a{
   width: 70%;
   background-color: red;
 }
-.login-footer {
-  border: $border;
-  margin: 50px;
-  height: 30vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+// .login-footer {
+//   border: $border;
+//   margin: 50px;
+//   height: 30vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 #login-button{
   margin-top: 10px;
   background-color: white;
