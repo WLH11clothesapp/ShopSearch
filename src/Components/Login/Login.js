@@ -40,7 +40,7 @@ function Login(props) {
       
       <section className="login-logo"></section>
       <section className='login-form'>
-        
+        <p id="login-title">Login</p>
        <section className="label-container">
           <label>Email <span className="star">*</span></label>
         </section>
