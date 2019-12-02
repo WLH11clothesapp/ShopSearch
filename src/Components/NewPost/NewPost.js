@@ -83,7 +83,7 @@ function NewPost(props) {
     let post_id = await axios
       .post('/api/post', {
         user_id: props.user_id, /// built this way so we don't have to login every time to work on this page
-        image: url,
+        image: actualUrl,
         text: text 
       })
       .then(res => {
