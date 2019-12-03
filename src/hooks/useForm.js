@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function isEmpty(obj) {
+function isEmpty(obj) {   /// function to test if object is empty
   for(var key in obj) {
       if(obj.hasOwnProperty(key))
           return false;
@@ -10,6 +10,7 @@ function isEmpty(obj) {
 
 export const useForm = (callback, login) => {
   ///callback is function to call if tests are passed. login is true if its the login component
+  const [errors, setErrors] = useState({})
   const [state, setState] = useState({
     /// used for values in input boxes where useForm is called
     email: '',
@@ -17,8 +18,7 @@ export const useForm = (callback, login) => {
     igHandle: '',
     password: ''
   });
-  const errors = {}; //is used to return errors for display
-
+  
   const handleChange = event => {
     /// handle changes for typing in input boxes where hook is called
     setState({
@@ -26,8 +26,9 @@ export const useForm = (callback, login) => {
       [event.target.name]: event.target.value
     });
   };
-
+  
   function validate(values) {
+    let errors = {}; //is used to return errors for display
     console.log('login', login)
     /// state will be put in for values
     if ( !login && !values.name ) {///test for name is there and if its longer than 3
@@ -40,23 +41,23 @@ export const useForm = (callback, login) => {
       /// checks for email and if it's in the right format
       errors.email = 'Must enter an email'; /// || login is to make sure it doesn't go off in the login form
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-      errors.name = 'Invalid Email address'; /// || login is to make sure it doesn't go off in the login form
+      errors.email = 'Invalid Email address'; /// || login is to make sure it doesn't go off in the login form
     }
 
     if ( !values.password ) {
       /// checks for password and if its longer than 2
-      errors.name = 'Password is required'; /// || login is to make sure it doesn't go off in the login form
+      errors.password = 'Password is required'; /// || login is to make sure it doesn't go off in the login form
       ;
     } else if (values.password.length < 3) {
-      errors.name = 'Password needs to be more than 2 characters'; /// || login is to make sure it doesn't go off in the login form
+      errors.password = 'Password needs to be more than 2 characters'; /// || login is to make sure it doesn't go off in the login form
       ;
     }
 
     if ( !login && !values.igHandle  ) {
       // checks for igHandle and if it starts with @
-      errors.name = 'Must enter an Instagram handle'; /// || login is to make sure it doesn't go off in the login form
+      errors.igHandle = 'Must enter an Instagram handle'; /// || login is to make sure it doesn't go off in the login form
     } else if (!/@\S+/.test(values.igHandle) && !login) {
-      errors.name = 'follow format @yourHandle'; /// || login is to make sure it doesn't go off in the login form
+      errors.igHandle = 'follow format @yourHandle'; /// || login is to make sure it doesn't go off in the login form
     }
     console.log('errors 1', errors)
     return errors;
@@ -64,21 +65,24 @@ export const useForm = (callback, login) => {
 
    const handleSubmit = () => {
     /// to run when submit button on form checks test are passed then updates errors or runs callback
-    console.log(validate(state))
-    console.log('isEmpty', isEmpty(errors))
-    if (isEmpty(errors)) {
-      console.log('passed is empty')
+    let errs = validate(state)
+    console.log('errors', errs)
+    console.log('isEmpty', isEmpty(errs))
+    setErrors(errs)
+    if (isEmpty(errs)) {
+      console.log('passed validate')
       let data;
       callback().then(res => {
+        console.log("hit then", res)
         if (res === 'Incorrect Password'){
-          errors.password = res
+          setErrors({password: res})
         } else if (res.includes('Email') ){
-          errors.email = res
+          setErrors({email: res})
         }
       }
       ).catch(err => console.log(err))
-       console.log('data', data)
     }
+    
   }; 
 
 
