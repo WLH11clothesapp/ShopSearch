@@ -8,12 +8,11 @@ import { connect } from 'react-redux';
 
 
 function Login(props) {
-  // const [errors, setErrors] = useState({})
   
-
-  async function handleClick() {
+  //get passed into useForm as callback that gets called when handleSubmit is called
+  async function handleClick() {  
     console.log('login handle click hit');
-    let pass = await axios
+    let passValue = await axios
       .post('/api/login', {
         email: state.email,
         password: state.password
@@ -21,19 +20,19 @@ function Login(props) {
       .then(res => {
         props.updateUser(res.data);
         props.history.push('/userprofile');
-        return 'test string';
       })
       .catch(err => {console.log(typeof err);
          return err.response.data})
-      return await pass
+    console.log('passValue', passValue)
+    return await passValue
   } 
 
   let { state, handleChange, handleSubmit, errors} = useForm( handleClick, true );
 
-  React.useEffect(() => {
-    console.log('state', state)
-    console.log('errors',errors)
-  }, [state,errors])
+  // React.useEffect(() => {
+  //   console.log('state', state)
+  //   console.log('errors',errors)
+  // }, [state, errors])
 
   return (
     <div className='login-page'>
@@ -67,7 +66,7 @@ function Login(props) {
           // placeholder='Enter your password'
           className={`${errors.password && 'inputError'}`}
         />
-        {errors.email && <p className='error'>{errors.password}</p>}
+        {errors.password && <p className='error'>{errors.password}</p>}
         <div className="button-border-login">
         <button
           id='login-button'

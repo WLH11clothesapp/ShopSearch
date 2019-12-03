@@ -13,9 +13,9 @@ function Register(props) {
   // the second value is a function to set the state
   // needs to have exact name. as name of input.
 
-  const handleRegBtn = () => {
+  const handleRegister =  async () => {
     //passed into useForm to be called if tests are passed
-    axios
+    let passValue = await axios
       .post('/api/register', {
         name: state.name,
         email: state.email,
@@ -23,17 +23,19 @@ function Register(props) {
         password: state.password
       })
       .then(res => {
-        props.updateUser();
+        props.updateUser(res.data);
         props.history.push('/userprofile');
       })
       .catch(err => {
-        console.log(err);
+        return err.response.data;
       });
+    console.log('passValue', passValue)
+    return await passValue  
   };
 
   ///hook that handles state and verifies that value pass requirements when form is submitted
   let { state, handleChange, handleSubmit, errors } = useForm(
-    handleRegBtn,
+    handleRegister,
     false
   );
 

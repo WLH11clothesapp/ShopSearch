@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function isEmpty(obj) {
+function isEmpty(obj) {   /// function to test if object is empty
   for(var key in obj) {
       if(obj.hasOwnProperty(key))
           return false;
@@ -41,23 +41,23 @@ export const useForm = (callback, login) => {
       /// checks for email and if it's in the right format
       errors.email = 'Must enter an email'; /// || login is to make sure it doesn't go off in the login form
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-      errors.name = 'Invalid Email address'; /// || login is to make sure it doesn't go off in the login form
+      errors.email = 'Invalid Email address'; /// || login is to make sure it doesn't go off in the login form
     }
 
     if ( !values.password ) {
       /// checks for password and if its longer than 2
-      errors.name = 'Password is required'; /// || login is to make sure it doesn't go off in the login form
+      errors.password = 'Password is required'; /// || login is to make sure it doesn't go off in the login form
       ;
     } else if (values.password.length < 3) {
-      errors.name = 'Password needs to be more than 2 characters'; /// || login is to make sure it doesn't go off in the login form
+      errors.password = 'Password needs to be more than 2 characters'; /// || login is to make sure it doesn't go off in the login form
       ;
     }
 
     if ( !login && !values.igHandle  ) {
       // checks for igHandle and if it starts with @
-      errors.name = 'Must enter an Instagram handle'; /// || login is to make sure it doesn't go off in the login form
+      errors.igHandle = 'Must enter an Instagram handle'; /// || login is to make sure it doesn't go off in the login form
     } else if (!/@\S+/.test(values.igHandle) && !login) {
-      errors.name = 'follow format @yourHandle'; /// || login is to make sure it doesn't go off in the login form
+      errors.igHandle = 'follow format @yourHandle'; /// || login is to make sure it doesn't go off in the login form
     }
     console.log('errors 1', errors)
     return errors;
@@ -68,26 +68,28 @@ export const useForm = (callback, login) => {
     let errs = validate(state)
     console.log('errors', errs)
     console.log('isEmpty', isEmpty(errs))
+    setErrors(errs)
     if (isEmpty(errs)) {
-      console.log('passed is empty')
+      console.log('passed validate')
       let data;
       callback().then(res => {
+        console.log("hit then", res)
         if (res === 'Incorrect Password'){
-          errs.password = res
+          setErrors({password: res})
         } else if (res.includes('Email') ){
-          errs.email = res
+          setErrors({email: res})
         }
       }
       ).catch(err => console.log(err))
-       console.log('data', data)
     }
+    
   }; 
 
 
   return {
     //stuff to pass back to forms
     state,
-    // errors,
+    errors,
     handleChange,
     handleSubmit
   };
