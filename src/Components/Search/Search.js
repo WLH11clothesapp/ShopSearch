@@ -1,24 +1,13 @@
 //Search
 import React, { useState } from 'react';
 import './Search.css';
+import SearchMapping from './SearchMapping';
 import SearchResults from '../SearchResults/SearchResults';
 
 export default function Search() {
   const [urlInput, setInput] = useState('');
-  const [categories, setCategories] = useState({
-    Shirts: false,
-    Outerwear: false,
-    Pants: false,
-    Shoes: false,
-    Accessories: false
-  });
-  const [brands, setBrands] = useState({
-    Target: false,
-    Nordstrom: false,
-    Abercrombie: false,
-    UrbanOutfitters: false,
-    Kuhl: false
-  });
+  const [categories, setCategories] = useState({});
+  const [brands, setBrands] = useState({});
 
   const handleUrlInput = value => {
     setInput(value);
@@ -26,7 +15,7 @@ export default function Search() {
   };
 
   const handleCategoriesCheckbox = name => {
-    setCategories({ ...categories, [name]: !categories[name] });
+    setCategories({ ...categories, [name]: !categories[name] || false });
   };
   const handleBrandsCheckbox = name => {
     setBrands({ ...brands, [name]: !brands[name] });
@@ -53,57 +42,10 @@ export default function Search() {
         >
           Clear
         </button>
-
-        <section className='label-container'>
-          <label>Brand:</label>
-        </section>
-        <div className='brand-container'>
-          <div>
-            <input
-              name='Target'
-              className='checkBox'
-              type='checkbox'
-              onChange={e => handleBrandsCheckbox(e.target.name)}
-            />
-            Target
-          </div>
-          <div>
-            <input
-              name='Nordstrom'
-              className='checkBox'
-              type='checkbox'
-              onChange={e => handleBrandsCheckbox(e.target.name)}
-            />
-            Nordstrom
-          </div>
-          <div>
-            <input
-              name={`Abercrombie`}
-              className='checkBox'
-              type='checkbox'
-              onChange={e => handleBrandsCheckbox(e.target.name)}
-            />
-            Abercrombie & Fitch
-          </div>
-          <div>
-            <input
-              name='Urban Outfitters'
-              className='checkBox'
-              type='checkbox'
-              onChange={e => handleBrandsCheckbox(e.target.name)}
-            />
-            Urban Outfitters
-          </div>
-          <div>
-            <input
-              name='Kuhl'
-              className='checkBox'
-              type='checkbox'
-              onChange={e => handleBrandsCheckbox(e.target.name)}
-            />
-            Kuhl
-          </div>
-        </div>
+        <SearchMapping
+          brandsFunction={handleBrandsCheckbox}
+          categoriesFunction={handleCategoriesCheckbox}
+        />
       </section>
       <section className='search-results-container'>
         <p className='search-title'>Search Results</p>

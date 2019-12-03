@@ -44,7 +44,7 @@ app.get('/api/user', authCtrl.getUser);
 app.get('/api/products', prodCtrl.getProducts);
 app.get('/api/product/:id', prodCtrl.getProduct);
 app.post('/api/product', prodCtrl.addProduct);
-app.get("/api/brandsandcatagories", prodCtrl.getBrandsAndCatagories);
+app.get('/api/brandsandcategories', prodCtrl.getBrandsAndCategories);
 app.get('/api/post-products/:post_id', prodCtrl.getPostProducts);
 
 //// postController endpoints

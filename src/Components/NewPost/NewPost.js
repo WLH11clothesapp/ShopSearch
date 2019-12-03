@@ -17,7 +17,7 @@ function NewPost(props) {
   const info = [];
 
   React.useEffect(() => {
-    axios.get('/api/brandsandcatagories').then(res => {
+    axios.get('/api/brandsandcategories').then(res => {
       setBrands(res.data.brands);
       setCategories(res.data.categories);
     });
