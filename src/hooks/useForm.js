@@ -10,6 +10,7 @@ function isEmpty(obj) {
 
 export const useForm = (callback, login) => {
   ///callback is function to call if tests are passed. login is true if its the login component
+  const [errors, setErrors] = useState({})
   const [state, setState] = useState({
     /// used for values in input boxes where useForm is called
     email: '',
@@ -17,8 +18,7 @@ export const useForm = (callback, login) => {
     igHandle: '',
     password: ''
   });
-  const errors = {}; //is used to return errors for display
-
+  
   const handleChange = event => {
     /// handle changes for typing in input boxes where hook is called
     setState({
@@ -26,8 +26,9 @@ export const useForm = (callback, login) => {
       [event.target.name]: event.target.value
     });
   };
-
+  
   function validate(values) {
+    let errors = {}; //is used to return errors for display
     console.log('login', login)
     /// state will be put in for values
     if ( !login && !values.name ) {///test for name is there and if its longer than 3
@@ -64,16 +65,17 @@ export const useForm = (callback, login) => {
 
    const handleSubmit = () => {
     /// to run when submit button on form checks test are passed then updates errors or runs callback
-    console.log(validate(state))
-    console.log('isEmpty', isEmpty(errors))
-    if (isEmpty(errors)) {
+    let errs = validate(state)
+    console.log('errors', errs)
+    console.log('isEmpty', isEmpty(errs))
+    if (isEmpty(errs)) {
       console.log('passed is empty')
       let data;
       callback().then(res => {
         if (res === 'Incorrect Password'){
-          errors.password = res
+          errs.password = res
         } else if (res.includes('Email') ){
-          errors.email = res
+          errs.email = res
         }
       }
       ).catch(err => console.log(err))
@@ -85,7 +87,7 @@ export const useForm = (callback, login) => {
   return {
     //stuff to pass back to forms
     state,
-    errors,
+    // errors,
     handleChange,
     handleSubmit
   };
