@@ -52,6 +52,8 @@
   width: 75%;
   margin: 15px 0 0 0;
   background-color: #e3f2ff;
+  background-position: center;
+  background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
