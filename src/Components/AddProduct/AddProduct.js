@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { v4 as randomString } from 'uuid';
 import axios from 'axios';
-import './AddProduct.css'
+import './AddProduct.css';
 
 function AddProduct(props) {
   const [state, setState] = React.useState({
@@ -30,17 +30,17 @@ function AddProduct(props) {
   };
 
   const brands = props.brands.map((e, i) => {
-    return <option key={`brand ${i}`}>{e}</option>
-})
-const categories = props.categories.map((e, i) => {
-    return <option key={`cat ${i}`}>{e}</option>
-})
+    return <option key={`brand ${i}`}>{e}</option>;
+  });
+  const categories = props.categories.map((e, i) => {
+    return <option key={`cat ${i}`}>{e}</option>;
+  });
 
   const getSignedRequest = () => {
     fetch(state.image)
       .then(res => res.blob())
       .then(blob => {
-        console.log(blob);
+        // console.log(blob);
         blob.lastModifiedDate = new Date();
         blob.name = randomString();
         const fileName = `${blob.name}`;
@@ -92,28 +92,31 @@ const categories = props.categories.map((e, i) => {
   return (
     <div className='add-product-container'>
       <section>
-        <p id="link-products-title"> Add Product</p>
-      <div className="label-container-add-product">
-          <label className="new-post-title">Name of Product<span className="star">*</span></label>
+        <p id='link-products-title'> Add Product</p>
+        <div className='label-container-add-product'>
+          <label className='new-post-title'>
+            Name of Product<span className='star'>*</span>
+          </label>
         </div>
         <input
           name='title'
           value={state.title}
-          onChange={handleChange}
-          className="product-input"
+          onChange={e => handleChange(e)}
+          className='product-input'
           // placeholder='Product Title'
         />
-        
       </section>
       <div className='selectors-container'>
         <section>
-        <div className="label-container-selectors">
-          <label className="new-post-title">Category<span className="star">*</span></label>
-        </div>
+          <div className='label-container-selectors'>
+            <label className='new-post-title'>
+              Category<span className='star'>*</span>
+            </label>
+          </div>
           <select
             name='category'
             value={state.category}
-            onChange={handleChange}
+            onChange={e => handleChange(e)}
             className='select-category'
           >
             <option hidden> SELECT ↓</option>
@@ -121,13 +124,15 @@ const categories = props.categories.map((e, i) => {
           </select>
         </section>
         <section>
-        <div className="label-container-selectors">
-          <label className="new-post-title">Brand<span className="star">*</span></label>
-        </div>
+          <div className='label-container-selectors'>
+            <label className='new-post-title'>
+              Brand<span className='star'>*</span>
+            </label>
+          </div>
           <select
             name='brand'
             value={state.brand}
-            onChange={handleChange}
+            onChange={e => handleChange(e)}
             className='select-brand'
           >
             <option hidden> SELECT ↓</option>
@@ -136,27 +141,31 @@ const categories = props.categories.map((e, i) => {
         </section>
       </div>
       <section>
-      <div className="label-container-add-product">
-          <label className="new-post-title">Product Image URL<span className="star">*</span></label>
+        <div className='label-container-add-product'>
+          <label className='new-post-title'>
+            Product Image URL<span className='star'>*</span>
+          </label>
         </div>
         <input
           name='image'
           value={state.image}
-          onChange={handleChange}
+          onChange={e => handleChange(e)}
           // placeholder='Product Image URL'
-          className="product-input"
+          className='product-input'
         />
       </section>
       <section>
-      <div className="label-container-add-product">
-          <label className="new-post-title">Link to Product<span className="star">*</span></label>
+        <div className='label-container-add-product'>
+          <label className='new-post-title'>
+            Link to Product<span className='star'>*</span>
+          </label>
         </div>
         <input
           name='url'
           value={state.url}
-          onChange={handleChange}
+          onChange={e => handleChange(e)}
           // placeholder='Product URL'
-          className="product-input"
+          className='product-input'
         />
       </section>
     </div>

@@ -1,40 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 //searchmapping can take in props for the following:
-//type: string that should either be 'Categories' or 'Brands'
-//stateFunction: function that sets the state of the type above to the returned checked values
-//for example, <SearchMapping type={'Brands'} stateFunction={handleBrandsCheckbox}/>
+//categoriesFunction: function that sets the state of the categories in Search.js
+//brandsFunction: function that sets the state of the brands in Search.js
+//for example, <SearchMapping categoriesFunction={handleCategoriesCheckbox} brandsFunction={handleBrandsCheckbox}/>
 
 const SearchMapping = props => {
-  const [data, setData] = useState('');
+  const { categoriesFunction, brandsFunction } = props;
+  const [brands, setBrands] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-  const { type, stateFunction } = props;
+  useEffect(() => {
+    axios
+      .get('/api/brandsandcategories')
+      .then(res => {
+        setBrands(res.data.brands);
+        setCategories(res.data.categories);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
-  //axios get all brands or categories
-
-  const mappedData = data.map((e, i) => {
+  const mappedBrands = brands.map((e, i) => {
     return (
-      <div key={`searchmapping${(e, i)}`}>
+      <div key={`brandmapping${i}`}>
         <input
           name={e}
           className='checkBox'
           type='checkbox'
-          onChange={e => stateFunction(e.target.name)}
+          onChange={e => brandsFunction(e.target.name)}
         />
         {e}
       </div>
     );
   });
+
+  const mappedCategories = categories.map((e, i) => {
+    return (
+      <div key={`categorymapping${i}`}>
+        <input
+          name={e}
+          className='checkBox'
+          type='checkbox'
+          onChange={e => categoriesFunction(e.target.name)}
+        />
+        {e}
+      </div>
+    );
+  });
+
   return (
     <>
       <section className='label-container'>
-        <label>{`${type}: `}</label>
+        <label>Brand:</label>
       </section>
-      <div className={`${type.toLowerCase()}-container`}>
-        {/* I added divs here just to package the input and input label together for styling purposes */}
-        {mappedData}
-      </div>
+      <div className='brand-container'>{mappedBrands}</div>
+      <section className='label-container'>
+        <label>Category:</label>
+      </section>
+      <div className='category-container'>{mappedCategories}</div>
     </>
   );
 };
