@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { v4 as randomString } from 'uuid';
 import axios from 'axios';
+import './AddProduct.css'
 
 function AddProduct(props) {
   const [state, setState] = React.useState({
@@ -91,56 +92,71 @@ const categories = props.categories.map((e, i) => {
   return (
     <div className='add-product-container'>
       <section>
-        <h6 className='add-product-h6'>NAME OF PRODUCT</h6>
+        <p id="link-products-title"> Add Product</p>
+      <div className="label-container-add-product">
+          <label className="new-post-title">Name of Product<span className="star">*</span></label>
+        </div>
         <input
           name='title'
           value={state.title}
           onChange={handleChange}
-          placeholder='Product Title'
+          className="product-input"
+          // placeholder='Product Title'
         />
+        
       </section>
       <div className='selectors-container'>
         <section>
-          <h6 className='add-product-h6'>CATEGORY</h6>
+        <div className="label-container-selectors">
+          <label className="new-post-title">Category<span className="star">*</span></label>
+        </div>
           <select
             name='category'
             value={state.category}
             onChange={handleChange}
             className='select-category'
           >
-            <option hidden> SELECT CATEGORY ↓</option>
+            <option hidden> SELECT ↓</option>
             {categories}
           </select>
         </section>
         <section>
-          <h6 className='add-product-h6'>BRAND</h6>
+        <div className="label-container-selectors">
+          <label className="new-post-title">Brand<span className="star">*</span></label>
+        </div>
           <select
             name='brand'
             value={state.brand}
             onChange={handleChange}
             className='select-brand'
           >
-            <option hidden> SELECT BRAND ↓</option>
+            <option hidden> SELECT ↓</option>
             {brands}
           </select>
         </section>
       </div>
       <section>
-        <h6 className='add-product-h6'>PRODUCT IMAGE URL:</h6>
+      <div className="label-container-add-product">
+          <label className="new-post-title">Product Image URL<span className="star">*</span></label>
+        </div>
         <input
           name='image'
           value={state.image}
           onChange={handleChange}
-          placeholder='Product Image URL'
+          // placeholder='Product Image URL'
+          className="product-input"
         />
       </section>
       <section>
-        <h6 className='add-product-h6'>PRODUCT URL:</h6>
+      <div className="label-container-add-product">
+          <label className="new-post-title">Link to Product<span className="star">*</span></label>
+        </div>
         <input
           name='url'
           value={state.url}
           onChange={handleChange}
-          placeholder='Product URL'
+          // placeholder='Product URL'
+          className="product-input"
         />
       </section>
     </div>

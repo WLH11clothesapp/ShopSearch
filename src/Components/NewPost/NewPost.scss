@@ -7,14 +7,23 @@
   textarea{
     @include font;
     background-color: $accent-color;
+    width:62vw;
     border: $border;
   }
 }
-.new-post-h5 {
-  margin: 5px;
+.new-post-title{
+  font-size: 20px;
 }
-
+.label-container{
+  // background-color: yellow;
+  margin-top: 5px;
+  width: 70%;
+  text-align: left;
+  padding-bottom: 2px;
+}
 .new-post-container {
+  margin-top: 10px;
+  background-color: $secondary-color;
   border: $border;
   width: 90vw;
   display: flex;
@@ -22,7 +31,11 @@
   align-items: center;
   padding-bottom: 15px;
 }
+
+
 .selectors-container {
+  // border: red solid 1px;
+  margin: 10px 0;
   display: flex;
   width: 100%;
   justify-content: space-around;
@@ -32,18 +45,28 @@
   height: 240px;
   width: 75%;
   margin: 15px 0 0 0;
-  background-color: $accent-color;
+  background-color: $background-color;
   background-position: center;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+#link-products-title{
+  font-size: 20px;
+}
 .add-product-container {
   border: $border;
+  background-color: $background-color;
   width: 90%;
   margin-bottom: 10px;
-  padding-bottom: 15px;
+  padding-bottom: 30px;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+}
+.product-input{
+  width: 80%;
 }
 .select-category,
 .select-brand {
@@ -52,6 +75,7 @@
   }
   background-color: $accent-color;
   border-radius: 0;
+  width: 92px;
 }
 .add-product-button-styler {
   width: 90%;
@@ -62,10 +86,10 @@
   background-color: rgb(74, 131, 74);
   color: white;
 }
-.add-product-h6 {
+.add-product-title {
   margin: 20px 0 8px 0;
 }
 .add-post-button {
-  background-color: $accent-color;
+  background-color: $background-color;
   margin: 20px 0 10px 0;
 }

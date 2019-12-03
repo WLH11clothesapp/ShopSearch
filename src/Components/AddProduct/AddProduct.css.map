@@ -1,9 +1,8 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AAAA,4BAA4B,CAAA;EAExB,UAAU,EAAE,GAAG;EACf,WAAW,EAAE,IAAI;EACjB,KAAK,EAAE,GAAG;EACV,UAAU,EAAE,IAAI;EAChB,cAAc,EAAE,GAAG;CACpB;;AACD,AAAA,0BAA0B,CAAA;EACxB,UAAU,EAAE,GAAG;EAEf,KAAK,EAAE,GAAG;EACV,UAAU,EAAE,IAAI;EAChB,cAAc,EAAE,GAAG;CACpB",
     "sources": [
-        "AddProduct.scss",
-        "../../../sass/_vars.scss"
+        "AddProduct.scss"
     ],
     "names": [],
     "file": "AddProduct.css"

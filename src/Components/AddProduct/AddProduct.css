@@ -1,1 +1,15 @@
-/* No CSS *//*# sourceMappingURL=AddProduct.css.map */
+.label-container-add-product {
+  margin-top: 5px;
+  margin-left: 31px;
+  width: 60%;
+  text-align: left;
+  padding-bottom: 2px;
+}
+
+.label-container-selectors {
+  margin-top: 5px;
+  width: 60%;
+  text-align: left;
+  padding-bottom: 2px;
+}
+/*# sourceMappingURL=AddProduct.css.map */
