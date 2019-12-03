@@ -34,17 +34,23 @@ function UserProfile(props) {
   console.log(props);
   return (
     <div className='user-profile-page'>
-      <h5>Welcome back, {props.name} </h5>
-      <button className='logout-button' onClick={() => logout()}>
-        Log Out
-      </button>
-      <h5>Create New Post:</h5>
-      <section className='add-post-container' onClick={() => newPostPush()} >+</section>
-      <h5>Your Recent Posts:</h5>
-      {/* if we like this idea of showing the user's posts on their profile page, we will need an additional component that we map over in this section */}
+      <section className="profile-info">
+      
+      
+        <i class="fas fa-user-circle fa-3x"></i>
+        <p className="user-name" className="user-profile-title">{props.name} </p>
+        
+        <p className="user-profile-title">{props.ig_handle}</p>
+      
+      </section>
+      
       <section className='user-posts'>
+      <div className='add-post-container' onClick={() => newPostPush()} >
+      +
+      </div>
         <UserPosts posts={posts} />
       </section>
+      <button className="logout-button" onClick={() => logout()}>Log Out</button>
     </div>
   );
 }

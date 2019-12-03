@@ -147,39 +147,46 @@ function NewPost(props) {
 
   return (
     <div className='new-post-page'>
-      <h5 className='new-post-h5'> Create New Post:</h5>
+      
       <section className='new-post-container'>
+      <p className='new-post-title'> Create New Post:</p>
         <div
           className='img-preview'
           style={{ backgroundImage: `url(${postImage})` }}
         >
-          {!postImage && 'Img preview'}
+          {!postImage && 'Image Preview'}
         </div>
-        <h5> Add image URL:</h5>
+        <div className="label-container">
+          <label className="new-post-title">Post Image URL<span className="star">*</span></label>
+        </div>
         <input
           value={postImage}
           onChange={handleUrlChange}
-          placeholder='Copy and paste your img URL here'
+          // placeholder='Copy and paste your img URL here'
         />
-        <h5> Add Description:</h5>
+        <div className="label-container">
+          <label className="new-post-title">Add Description<span className="star">*</span></label>
+        </div>
         <textarea
+          
           cols='50'
           rows='4'
           value={text}
           onChange={handleTextChange}
-          placeholder='Add Description of your New Post'
+          // placeholder='Add Description of your New Post'
         ></textarea>
-        <h5> Add Products:</h5>
+        
+        <br/>
         {newProductsList} {/* displays addProduct * product count */}
         <div className='add-product-button-styler'>
           <button className='add-product-button' onClick={incCount}>
             {' '}
-            + Add Another Product
+            + Add Product
           </button>
           {productCount > 1 && (
             <button className='add-product-button' onClick={decCount}>
               {' '}
-              - remove a Product
+              - Remove Product
             </button>
           )}
         </div>
