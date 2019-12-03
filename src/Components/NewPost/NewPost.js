@@ -14,18 +14,16 @@ function NewPost(props) {
   const [productCount, setProductCount] = React.useState(1); /// used to determine the count of addProduct
   const [brands, setBrands] = React.useState([]);
   const [categories, setCategories] = React.useState([]);
-  const info = [];
+  const [info, setInfo] = React.useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios.get('/api/brandsandcategories').then(res => {
       setBrands(res.data.brands);
       setCategories(res.data.categories);
+      if (postImage !== '') {
+        getSignedRequest();
+      }
     });
-  }, []);
-  useEffect(() => {
-    if (postImage !== '') {
-      getSignedRequest();
-    }
   }, [postImage]);
   ///add a useEffect to get brand and category from database
 
@@ -33,7 +31,7 @@ function NewPost(props) {
     fetch(postImage)
       .then(res => res.blob())
       .then(blob => {
-        console.log(blob);
+        // console.log(blob);
         blob.lastModifiedDate = new Date();
         blob.name = randomString();
         const fileName = `${blob.name}`;
@@ -81,13 +79,16 @@ function NewPost(props) {
     setText(event.target.value);
   };
   const grabInfo = (index, stateObj) => {
-    info[index] = stateObj;
+    let newInfo = info.slice();
+    newInfo[index] = stateObj;
+    setInfo(newInfo);
+    console.log(info);
   };
 
   async function makePost() {
     let post_id = await axios
       .post('/api/post', {
-        user_id: props.user_id, /// built this way so we don't have to login every time to work on this page
+        user_id: props.user_id,
         image: actualUrl,
         text: text
       })
@@ -96,11 +97,12 @@ function NewPost(props) {
       })
       .catch(err => console.log(err));
 
-    console.log('post_id', post_id);
+    // console.log('post_id', post_id);
 
     for (let j = 0; j < productCount; j++) {
       const i = info[j];
-      console.log('post_id', post_id);
+      console.log(i);
+      // console.log('post_id', post_id);
       await axios
         .post('/api/product', {
           title: i.title,
@@ -112,7 +114,9 @@ function NewPost(props) {
         })
         .then(res => {
           console.log('res.data', res.data, j);
-          props.history.push('/userprofile');
+          if (j === productCount - 1) {
+            props.history.push('/userprofile');
+          }
           return res.data;
         })
         .catch(err => console.log(err));
@@ -127,6 +131,7 @@ function NewPost(props) {
     setProductCount(productCount + 1);
     console.log('inc');
   };
+
   const newProductsList = [];
   for (let i = 0; i < productCount; i++) {
     newProductsList.push(

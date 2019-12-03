@@ -29,17 +29,17 @@ function AddProduct(props) {
   };
 
   const brands = props.brands.map((e, i) => {
-    return <option key={`brand ${i}`}>{e}</option>
-})
-const categories = props.categories.map((e, i) => {
-    return <option key={`cat ${i}`}>{e}</option>
-})
+    return <option key={`brand ${i}`}>{e}</option>;
+  });
+  const categories = props.categories.map((e, i) => {
+    return <option key={`cat ${i}`}>{e}</option>;
+  });
 
   const getSignedRequest = () => {
     fetch(state.image)
       .then(res => res.blob())
       .then(blob => {
-        console.log(blob);
+        // console.log(blob);
         blob.lastModifiedDate = new Date();
         blob.name = randomString();
         const fileName = `${blob.name}`;
@@ -95,7 +95,7 @@ const categories = props.categories.map((e, i) => {
         <input
           name='title'
           value={state.title}
-          onChange={handleChange}
+          onChange={e => handleChange(e)}
           placeholder='Product Title'
         />
       </section>
@@ -105,7 +105,7 @@ const categories = props.categories.map((e, i) => {
           <select
             name='category'
             value={state.category}
-            onChange={handleChange}
+            onChange={e => handleChange(e)}
             className='select-category'
           >
             <option hidden> SELECT CATEGORY ↓</option>
@@ -117,7 +117,7 @@ const categories = props.categories.map((e, i) => {
           <select
             name='brand'
             value={state.brand}
-            onChange={handleChange}
+            onChange={e => handleChange(e)}
             className='select-brand'
           >
             <option hidden> SELECT BRAND ↓</option>
@@ -130,7 +130,7 @@ const categories = props.categories.map((e, i) => {
         <input
           name='image'
           value={state.image}
-          onChange={handleChange}
+          onChange={e => handleChange(e)}
           placeholder='Product Image URL'
         />
       </section>
@@ -139,7 +139,7 @@ const categories = props.categories.map((e, i) => {
         <input
           name='url'
           value={state.url}
-          onChange={handleChange}
+          onChange={e => handleChange(e)}
           placeholder='Product URL'
         />
       </section>

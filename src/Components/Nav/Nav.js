@@ -24,10 +24,10 @@ class Nav extends React.Component {
         .get('/api/user')
         .then(res => {
           this.props.updateUser(res.data);
-          console.log('nav .then hit ', res.data);
+          // console.log('nav .then hit ', res.data);
         })
         .catch(err => console.log('err hit', err));
-      console.log('nav didUpdate hit');
+      // console.log('nav didUpdate hit');
     }
   }
 
