@@ -1,5 +1,8 @@
 @import '../../../sass/vars';
 
+a{
+  color: black;
+}
 .landing-page {
   background-color: $background-color;
   height: 100vh;
@@ -7,31 +10,43 @@
   flex-direction: column;
   align-items: center;
 }
-.placeholder {
-  height: 10vh;
-  background-color: $accent-color;
-}
+
 .landing-content-about {
-  // border: $border;
+  // border: red 1px solid;
   width: 90vw;
-  height: 32vh;
+  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10px 0;
-  background-image: url('./LandingTopSection.png');
+  background-image: url('./Untitled\ design-2.png');
   background-size: cover;
+  background-position: center;
+  position: relative;
 
+}
+#landing-title{
+  // background-color: yellow;
+  position: absolute;
+  bottom: 0px;
+  margin: 2px;
+  font-size: 20px;
+}
+#landing-explore-title{
+  font-size: 20px;
+  margin: 5px 0;
 }
 .popular-products {
   border: $border;
+  background-color: $secondary-color;
   width: 90vw;
-  height: 40vh;
+  height: 60vh;
   padding-top: 10px;
   margin-bottom: 10px;
+  font-size: px;
 }
 .random-products-container {
-  // border: red solid .1px;
+  
   height: 90%;
   display: flex;
   justify-content: center;
@@ -39,10 +54,10 @@
   flex-wrap: wrap;
 }
 .random-product {
-  border: $border;
+  
   height: 42%;
   width: 40%;
-  background-color: $accent-color;
+  background-color: white;
   margin: 10px;
   display: flex;
   justify-content: center;
@@ -50,6 +65,7 @@
 }
 
 .random-product-image {
+  border: $border;
   height: 100%;
   width: 100%;
   background-position: center;
@@ -57,11 +73,23 @@
 }
 .landing-content-register {
   border: $border;
-  height: 30vh;
+  height: 20vh;
   width: 90vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('./LandingBottomSection-3.png');
+  background-image: url('./LandingBottomSection-4.png');
   background-size: cover;
+  margin-bottom: 20px;
+}
+#landing-register-info{
+  background-color:$background-color;
+  padding:10px;
+  border: $border;
+  width: 80%;
+  font-size: 20px;
+
+}
+#register-link{
+  text-decoration: underline;
 }

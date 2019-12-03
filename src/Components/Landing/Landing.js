@@ -9,17 +9,24 @@ export default function Landing() {
     <div className="landing-page">
       
       <section className="landing-content-about">
-
+      <p id="landing-title">Search. Discover. Slay.</p>
       </section>
       <section className="popular-products">
-        Explore our Popular Products
+        <p id="landing-explore-title"> Explore Popular Items</p>
         <div className="random-products-container">
           <LandingProducts />
         </div>
       </section>
-      <Link to='/register'>
+      
         <section className="landing-content-register">
-      </section></Link>
+          <p id="landing-register-info">
+          Ready to Get Started?
+        
+          <br/>
+          <Link id="register-link" to='/register'>Create New Account</Link>
+          </p>
+          
+      </section>
     </div>
   );
 }
