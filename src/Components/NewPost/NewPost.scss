@@ -7,6 +7,7 @@
   textarea{
     @include font;
     background-color: $accent-color;
+    border: $border;
   }
 }
 .new-post-h5 {

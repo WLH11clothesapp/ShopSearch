@@ -47,6 +47,7 @@ export default function PostPage(props) {
       <section className='post-photo-container'>
         {post.image && <img src={post.image} alt=' your selected post' />}
       </section>
+
       <a
         href={
           post.ig_handle
@@ -56,7 +57,7 @@ export default function PostPage(props) {
       >
         {post.ig_handle}
       </a>
-
+      <p>{post.text}</p>
       <section className='search-results-container'>
         <h5>Products in this post</h5>
         <div className='product-results'>{productsList}</div>
