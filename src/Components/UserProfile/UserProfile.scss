@@ -4,24 +4,36 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 10px;
 }
-.placeholder {
-  height: 10vh;
-  background-color: $accent-color;
+.user-profile-title{
+  font-size: $title-font;
+  margin: 5px;
+}
+
+.user-name{
+  margin-left: 10px;
 }
 .logout-button {
-  background-color: $accent-color;
+  background-color: white;
   @include font;
+  border: none;
+  text-decoration: underline;
 }
 .add-post-container {
-  width: 50vw;
+  background-color: $secondary-color;
   border: $border;
-  height: 25vh;
   font-size: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
+  // color: white;
+  font-family: 'Baskervville', serif;
+  height: 160px;
+  width: 140px;
+  margin: 10px;
 }
+
 .user-posts {
   // border: red solid .1px;
   width: 90vw;
