@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "AddProduct.scss",
+        "../../../sass/_vars.scss"
+    ],
+    "names": [],
+    "file": "AddProduct.css"
+}

@@ -11,6 +11,10 @@
           align-items: center;
 }
 
+.post-page p {
+  width: 90vw;
+}
+
 .post-photo-container {
   height: 40vh;
   width: 90vw;

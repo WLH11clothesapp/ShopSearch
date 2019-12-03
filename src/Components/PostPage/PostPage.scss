@@ -4,7 +4,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    p{
+        //mark added this to make text not go edge to edge.
+        width: 90vw; 
+    }
 }
 .post-photo-container{
     height: 40vh;
