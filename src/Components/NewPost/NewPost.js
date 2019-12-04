@@ -28,26 +28,21 @@ function NewPost(props) {
   ///add a useEffect to get brand and category from database
 
   const getSignedRequest = () => {
-    fetch(postImage)
-      .then(res => res.blob())
-      .then(blob => {
-        // console.log(blob);
-        blob.lastModifiedDate = new Date();
-        blob.name = randomString();
-        const fileName = `${blob.name}`;
-        axios
-          .get('/api/signs3', {
-            params: {
-              'file-name': fileName,
-              'file-type': blob.type
-            }
-          })
-          .then(res => {
-            const { signedRequest, url } = res.data;
-            uploadFile(blob, signedRequest, url);
-          })
-          .catch(err => console.log(err));
-      });
+    let file = document.getElementById('file').files[0];
+    console.log(file);
+    const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`;
+    axios
+      .get('/api/signs3', {
+        params: {
+          'file-name': fileName,
+          'file-type': file.type
+        }
+      })
+      .then(res => {
+        const { signedRequest, url } = res.data;
+        uploadFile(file, signedRequest, url);
+      })
+      .catch(err => console.log(err));
   };
 
   const uploadFile = (file, signedRequest, url) => {
@@ -147,36 +142,38 @@ function NewPost(props) {
 
   return (
     <div className='new-post-page'>
-      
       <section className='new-post-container'>
-      <p className='new-post-title'> Create New Post:</p>
+        <p className='new-post-title'> Create New Post:</p>
         <div
           className='img-preview'
-          style={{ backgroundImage: `url(${postImage})` }}
+          style={{ backgroundImage: `url(${actualUrl})` }}
         >
-          {!postImage && 'Image Preview'}
+          {!actualUrl && 'Image Preview'}
         </div>
-        <div className="label-container">
-          <label className="new-post-title">Post Image URL<span className="star">*</span></label>
+        <div className='label-container'>
+          <label className='new-post-title'>
+            Upload Image<span className='star'>*</span>
+          </label>
         </div>
         <input
-          value={postImage}
-          onChange={handleUrlChange}
-          // placeholder='Copy and paste your img URL here'
+          type='file'
+          id='file'
+          accept='image/png, image/jpeg'
+          onChange={() => getSignedRequest()}
         />
-        <div className="label-container">
-          <label className="new-post-title">Add Description<span className="star">*</span></label>
+        <div className='label-container'>
+          <label className='new-post-title'>
+            Add Description<span className='star'>*</span>
+          </label>
         </div>
         <textarea
-          
           cols='50'
           rows='4'
           value={text}
           onChange={handleTextChange}
           // placeholder='Add Description of your New Post'
         ></textarea>
-        
-        <br/>
+        <br />
         {newProductsList} {/* displays addProduct * product count */}
         <div className='add-product-button-styler'>
           <button className='add-product-button' onClick={incCount}>
