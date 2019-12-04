@@ -32,9 +32,7 @@ export default function ProductPage (props){
                 post_id={e.post_id}
                 />
     })
-
     console.log('postsList', postsList)
-    console.log()
     return(
         <div className="product-page">
             <h5>{product.title}</h5>

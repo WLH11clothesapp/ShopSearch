@@ -48,15 +48,13 @@ export default function PostPage(props) {
       <section className='post-photo-container'>
         {post.image && <img src={post.image} alt=' your selected post' />}
       </section>
-
       <a
         href={
           post.ig_handle
             ? `https://www.instagram.com/${atRemover(post.ig_handle)}`
             : '/'
         }
-      >
-        {post.ig_handle}
+      >{post.ig_handle}
       </a>
       <p>{post.text}</p>
       <section className='search-results-container'>
