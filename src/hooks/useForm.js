@@ -9,10 +9,10 @@ function isEmpty(obj) {   /// function to test if object is empty
 }
 
 export const useForm = (callback, login) => {
-  ///callback is function to call if tests are passed. login is true if its the login component
+  //callback is function to call if tests are passed. login is true if its the login component
   const [errors, setErrors] = useState({})
   const [state, setState] = useState({
-    /// used for values in input boxes where useForm is called
+    // used for values in input boxes where useForm is called
     email: '',
     name: '',
     igHandle: '',

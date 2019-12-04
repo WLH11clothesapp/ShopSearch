@@ -7,8 +7,10 @@ import axios from 'axios';
 import UserPosts from '../UserPosts/UserPosts';
 
 function UserProfile(props) {
-  const [posts, setPosts] = useState([]);
 
+  const [posts, setPosts] = useState([]); // this hook sets state.
+// this is basically like a componentDidMount with the open [].
+// you can also use useEffect as a componentDidUpdate
   useEffect(() => {
     console.log(`user_id: ${props.user_id}`);
     axios
@@ -28,6 +30,7 @@ function UserProfile(props) {
       })
       .catch(err => console.log(err));
   };
+//   when clicking the + post button it pushes to newpost
   const newPostPush = () => {
       props.history.push('/newpost')
   }
