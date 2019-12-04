@@ -11,6 +11,10 @@
           align-items: center;
 }
 
+.product-page a {
+  font-size: 25px;
+}
+
 .product-photo-container {
   height: 40vh;
   width: 90vw;

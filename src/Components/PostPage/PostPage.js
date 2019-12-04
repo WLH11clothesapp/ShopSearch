@@ -43,7 +43,8 @@ export default function PostPage(props) {
 
   return (
     <div className='post-page'>
-      <h5>Selected Post</h5>
+        {/* used empty spaces just to make it look clean still. */}
+      <h5>  </h5>
       <section className='post-photo-container'>
         {post.image && <img src={post.image} alt=' your selected post' />}
       </section>

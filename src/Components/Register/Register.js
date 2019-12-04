@@ -33,7 +33,7 @@ function Register(props) {
     return await passValue  
   };
 
-  ///hook that handles state and verifies that value pass requirements when form is submitted
+  //hook that handles state and verifies that value pass requirements when form is submitted
   let { state, handleChange, handleSubmit, errors } = useForm(
     handleRegister,
     false
