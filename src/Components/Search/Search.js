@@ -11,9 +11,7 @@ export default function Search() {
 
   const handleUrlInput = value => {
     setInput(value);
-    // console.log(urlInput)
   };
-
   const handleCategoriesCheckbox = name => {
     setCategories({ ...categories, [name]: !categories[name] || false });
   };
