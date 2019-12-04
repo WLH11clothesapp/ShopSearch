@@ -5,7 +5,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    // making the here link bigger
+    a{
+        font-size: 25px;
+    }
 }
 .product-photo-container{
     height: 40vh;
