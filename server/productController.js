@@ -2,7 +2,6 @@ module.exports = {
   getProducts: async (req, res) => {
     const db = req.app.get('db');
     const products = await db.get_products().catch(err => console.log(err));
-    console.log(products);
     res.status(200).send(products);
   },
 
@@ -22,12 +21,10 @@ module.exports = {
 
   addProduct: async (req, res) => {
     const { title, brand, category, url, post_id, img_url } = req.body;
-    console.log('post_id', post_id);
     const db = req.app.get('db');
 
     let product_id = await db.check_product_url(url);
     if (!product_id[0]) {
-      console.log('hit no product');
       product_id = await db.add_product({
         title,
         brand,
@@ -35,25 +32,18 @@ module.exports = {
         url,
         img_url
       });
-    } else {
-      console.log('no violence');
-    }
-
+    } 
     product_id = product_id[0].product_id;
-    console.log(post_id);
     await db.add_posts_product(post_id, product_id);
     res.sendStatus(200);
   },
 
   getBrandsAndCategories: async (req, res) => {
-    console.log('object');
     const db = req.app.get('db');
     let brands = await db.get_brands();
     brands = brands.map(e => e.brand);
     let categories = await db.get_categories();
     categories = categories.map(e => e.category);
-    console.log('brands', brands);
-    console.log('categories', categories);
     res.status(200).send({ brands, categories });
   }
 };

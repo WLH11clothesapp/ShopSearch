@@ -16,9 +16,7 @@ module.exports = {
     const { email, password, name, igHandle } = req.body;
     let foundUser = await db.check_email(email);
     if (foundUser[0]) {
-      console.log('foundEmail')
       res.status(409).send('Email already exists');
-      console.log('what?')
     } else {
       const salt = bcrypt.genSaltSync(10);
       const hash = bcrypt.hashSync(password, salt);
@@ -36,12 +34,11 @@ module.exports = {
 
   login: async (req, res) => {
     const { email, password } = req.body;
-    console.log('req.body', req.body);
     const db = req.app.get('db');
     let foundUser = await db.check_email(email);
     if (!foundUser[0]) {
       res.status(401).send('Email is not Registered');
-    } else{
+    } else {
       const authenticated = bcrypt.compareSync(password, foundUser[0].password);
       if (authenticated) {
         delete foundUser[0].password;
